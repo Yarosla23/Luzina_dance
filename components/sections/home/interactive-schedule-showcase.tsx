@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Clock3, Sparkles, Users2 } from "lucide-react";
 import { type ReactNode, useState } from "react";
 
@@ -12,17 +12,18 @@ const directionOrder = Array.from(
 );
 
 const directionPalette: Record<string, string> = {
-  Контемп: "from-white/20 via-white/5 to-transparent text-foreground",
-  "Хип-хоп микс": "from-[#8f1717]/40 via-[#8f1717]/10 to-transparent text-foreground",
-  "Хип-хоп герли": "from-[#d7b28a]/30 via-[#d7b28a]/10 to-transparent text-foreground",
-  "Открытая хореография": "from-[#7d1010]/35 via-white/5 to-transparent text-foreground",
-  "Практика / съемка": "from-[#b21818]/25 via-[#b21818]/5 to-transparent text-foreground",
-  "Дополнительный класс": "from-[#f4efe8]/15 via-white/5 to-transparent text-foreground",
+  Контемп: "from-white/12 via-transparent to-transparent text-foreground",
+  "Хип-хоп микс": "from-[#a8193d]/28 via-transparent to-transparent text-foreground",
+  "Хип-хоп герли": "from-[#641326]/45 via-transparent to-transparent text-foreground",
+  "Открытая хореография": "from-[#a8193d]/22 via-transparent to-transparent text-foreground",
+  "Практика / съемка": "from-white/10 via-transparent to-transparent text-foreground",
+  "Дополнительный класс": "from-[#641326]/30 via-transparent to-transparent text-foreground",
 };
 
 export function InteractiveScheduleShowcase() {
   const [activeDayIndex, setActiveDayIndex] = useState(0);
   const [activeDirection, setActiveDirection] = useState("Все направления");
+  const shouldReduceMotion = useReducedMotion();
 
   const activeDay = homeSchedule[activeDayIndex];
   const visibleSessions =
@@ -33,18 +34,15 @@ export function InteractiveScheduleShowcase() {
   const hasFilteredSessions = visibleSessions.length > 0;
 
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-white/12 bg-white/[0.05] p-4 backdrop-blur-xl sm:p-6 lg:p-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(178,24,24,0.24),transparent_70%)]" />
-      <div className="pointer-events-none absolute -right-24 top-10 h-56 w-56 rounded-full bg-white/5 blur-3xl" />
-
+    <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#13090c] p-4 sm:p-6 lg:p-8">
       <div className="relative flex flex-col gap-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm uppercase tracking-[0.24em] text-muted">
+            <p className="text-sm font-semibold uppercase text-muted">
               Переключение по дням
             </p>
             <h3 className="mt-3 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-              Интерактивное расписание в ритме студии, а не в виде скучной таблицы.
+              Выберите день и направление — покажем подходящие занятия.
             </h3>
           </div>
 
@@ -81,15 +79,15 @@ export function InteractiveScheduleShowcase() {
                   type="button"
                   onClick={() => setActiveDayIndex(index)}
                   className={cn(
-                    "group relative overflow-hidden rounded-[1.75rem] border px-5 py-4 text-left transition duration-300",
+                    "group relative min-h-20 overflow-hidden rounded-2xl border px-5 py-4 text-left transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
                     isActive
-                      ? "border-white/20 bg-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
-                      : "border-white/10 bg-black/20 hover:border-white/20 hover:bg-white/[0.05]",
+                      ? "border-accent-strong bg-accent text-white"
+                      : "border-white/10 bg-black/20 hover:border-white/30 hover:bg-white/[0.04]",
                   )}
                 >
                   <div
                     className={cn(
-                      "absolute inset-0 bg-[linear-gradient(135deg,rgba(178,24,24,0.24),transparent_55%)] transition duration-300",
+                        "absolute inset-0 bg-[linear-gradient(135deg,rgba(168,25,61,0.24),transparent_55%)] transition duration-200",
                       isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100",
                     )}
                   />
@@ -104,7 +102,7 @@ export function InteractiveScheduleShowcase() {
                     </div>
                     <span
                       className={cn(
-                        "rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.24em]",
+                        "rounded-full border px-3 py-1 text-xs font-semibold uppercase",
                         isActive
                           ? "border-white/20 bg-white/10 text-foreground"
                           : "border-white/10 bg-white/5 text-muted",
@@ -120,12 +118,12 @@ export function InteractiveScheduleShowcase() {
 
           <div className="grid gap-5">
             <div className="grid gap-5">
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-white/[0.06] p-6 sm:p-7">
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(178,24,24,0.18),transparent_58%)]" />
+              <div className="relative overflow-hidden rounded-3xl border border-white/14 bg-black/25 p-6 sm:p-7">
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(100,19,38,0.24),transparent_58%)]" />
                 <div className="relative flex flex-col gap-6">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.24em] text-muted">
+                      <p className="text-sm font-semibold uppercase text-muted">
                         Активный день
                       </p>
                       <h4 className="mt-3 font-serif text-4xl text-foreground">
@@ -133,7 +131,7 @@ export function InteractiveScheduleShowcase() {
                       </h4>
                       <p className="mt-3 max-w-lg text-sm leading-7 text-muted sm:text-base">
                         {hasFilteredSessions
-                          ? "Выбранные занятия собраны в одном фокусе: время, возраст и педагог читаются за пару секунд."
+                          ? "Проверьте время, уровень и педагога. Перед первым визитом мы подтвердим наличие места."
                           : "По выбранному направлению в этот день занятий нет. Попробуйте соседний день или сбросьте фильтр."}
                       </p>
                     </div>
@@ -141,7 +139,7 @@ export function InteractiveScheduleShowcase() {
 
                   <motion.div
                     key={`${activeDay.day}-${activeDirection}`}
-                    initial={{ opacity: 0, y: 18 }}
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="grid gap-3"
@@ -151,20 +149,20 @@ export function InteractiveScheduleShowcase() {
                         <article
                           key={`${activeDay.day}-${session.time}-${session.direction}`}
                           className={cn(
-                            "relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-5",
+                            "relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] p-5",
                             "before:absolute before:inset-0 before:bg-gradient-to-r before:opacity-100 before:content-['']",
                             directionPalette[session.direction] ?? "from-white/10 via-transparent to-transparent",
                           )}
                         >
                           <div className="relative flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                             <div className="flex items-start gap-4">
-                              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-black/30 text-foreground">
+                              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/30 text-foreground">
                                 <Clock3 className="h-5 w-5" />
                               </div>
                               <div>
                                 <div className="flex flex-wrap items-center gap-3">
                                   <p className="text-2xl text-foreground">{session.time}</p>
-                                  <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-muted">
+                                  <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs font-semibold uppercase text-muted">
                                     Слот {index + 1}
                                   </span>
                                 </div>
@@ -175,7 +173,7 @@ export function InteractiveScheduleShowcase() {
                             </div>
 
                             <div className="flex flex-wrap gap-2 lg:max-w-[340px] lg:justify-end">
-                              <MetaPill icon={<Users2 className="h-4 w-4" />} text={session.age} />
+                              <MetaPill icon={<Users2 className="h-4 w-4" />} text={session.level} />
                               <MetaPill
                                 icon={<Sparkles className="h-4 w-4" />}
                                 text={session.teacher}
@@ -185,12 +183,12 @@ export function InteractiveScheduleShowcase() {
                         </article>
                       ))
                     ) : (
-                      <div className="rounded-[1.75rem] border border-dashed border-white/14 bg-white/[0.03] px-5 py-10 text-center">
+                      <div className="rounded-3xl border border-dashed border-white/20 bg-white/[0.03] px-5 py-10 text-center">
                         <p className="font-serif text-2xl text-foreground">
                           В этот день пауза по выбранному направлению
                         </p>
                         <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-muted">
-                          Сетка остаётся гибкой: можно быстро проверить другие дни и найти подходящее окно без длинного скролла.
+                          Проверьте соседний день или сбросьте фильтр, чтобы увидеть все занятия.
                         </p>
                       </div>
                     )}
@@ -217,7 +215,7 @@ function DirectionChip({ label, isActive, onClick }: DirectionChipProps) {
       type="button"
       onClick={onClick}
       className={cn(
-        "rounded-full border px-4 py-2 text-sm transition duration-300",
+        "min-h-11 rounded-full border px-4 py-2 text-sm transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
         isActive
           ? "border-white/20 bg-white/10 text-foreground"
           : "border-white/10 bg-black/20 text-muted hover:border-white/20 hover:text-foreground",

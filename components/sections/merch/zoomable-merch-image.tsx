@@ -2,7 +2,7 @@
 
 import { Minus, Plus, X } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,6 +27,7 @@ export function ZoomableMerchImage({
 }: ZoomableMerchImageProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!isOpen) {
@@ -34,6 +35,9 @@ export function ZoomableMerchImage({
     }
 
     setZoom(1);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -50,7 +54,10 @@ export function ZoomableMerchImage({
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
   }, [isOpen]);
 
   return (
@@ -60,7 +67,7 @@ export function ZoomableMerchImage({
         onClick={() => setIsOpen(true)}
         aria-label={`Открыть изображение: ${alt}`}
         className={cn(
-          "relative block h-full w-full cursor-zoom-in overflow-hidden text-left",
+          "relative block h-full w-full cursor-zoom-in overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset",
           className,
         )}
       >
@@ -77,15 +84,15 @@ export function ZoomableMerchImage({
 
       {isOpen ? (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md p-4 sm:p-8"
+          className="fixed inset-0 z-50 bg-black/95 p-4 backdrop-blur-md sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={alt}
           onClick={() => setIsOpen(false)}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,18,18,0.18),rgba(0,0,0,0.94)_60%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(100,19,38,0.2),transparent_42%)]" />
 
-          <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/55 p-1 text-white">
+          <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#13090c] p-1 text-white">
             <button
               type="button"
               aria-label="Уменьшить изображение"
@@ -93,13 +100,13 @@ export function ZoomableMerchImage({
                 event.stopPropagation();
                 setZoom((currentZoom) => Math.max(currentZoom - 0.25, 1));
               }}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-white/10 disabled:opacity-40"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-40"
               disabled={zoom <= 1}
             >
               <Minus className="h-4 w-4" />
             </button>
 
-            <span className="min-w-12 text-center text-xs uppercase tracking-[0.18em] text-white/80">
+            <span className="min-w-12 text-center text-xs uppercase text-white/80">
               {Math.round(zoom * 100)}%
             </span>
 
@@ -110,7 +117,7 @@ export function ZoomableMerchImage({
                 event.stopPropagation();
                 setZoom((currentZoom) => Math.min(currentZoom + 0.25, 3));
               }}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-white/10 disabled:opacity-40"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-40"
               disabled={zoom >= 3}
             >
               <Plus className="h-4 w-4" />
@@ -118,13 +125,14 @@ export function ZoomableMerchImage({
           </div>
 
           <button
+            ref={closeButtonRef}
             type="button"
             aria-label="Закрыть полноэкранный просмотр"
             onClick={(event) => {
               event.stopPropagation();
               setIsOpen(false);
             }}
-            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white transition hover:bg-black/70"
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#13090c] text-white transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <X className="h-5 w-5" />
           </button>

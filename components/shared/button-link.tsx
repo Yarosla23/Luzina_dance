@@ -6,14 +6,14 @@ import { type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonLinkVariants = cva(
-  "group inline-flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-medium tracking-[0.14em] uppercase transition duration-300",
+  "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {
         primary:
-          "border-transparent bg-[linear-gradient(135deg,rgba(166,24,24,1),rgba(107,16,16,1))] text-white shadow-soft hover:-translate-y-0.5 hover:shadow-[0_24px_80px_rgba(122,22,22,0.35)]",
+          "border-accent-strong bg-accent text-white hover:-translate-y-0.5 hover:bg-accent-strong hover:shadow-[0_18px_50px_rgba(100,19,38,0.42)]",
         secondary:
-          "border-white/12 bg-white/[0.03] text-foreground hover:border-white/20 hover:bg-white/[0.06]",
+          "border-white/30 bg-transparent text-foreground hover:border-white hover:bg-white hover:text-black",
       },
     },
     defaultVariants: {

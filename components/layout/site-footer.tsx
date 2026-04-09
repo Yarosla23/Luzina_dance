@@ -44,17 +44,16 @@ export function SiteFooter() {
   return (
     <footer
       id="contacts"
-      className="border-t border-white/10 pb-8sm:pb-10 sm:pt-20"
+      className="border-t border-white/10 bg-[#050405] pb-8 pt-16 sm:pb-10 sm:pt-20"
     >
       <SiteShell>
-        <div className="surface-panel overflow-hidden p-6 sm:p-8 lg:p-10">
+        <div className="relative overflow-hidden rounded-[2rem_2rem_4rem_2rem] border border-white/14 bg-[#13090c] p-6 before:absolute before:inset-y-10 before:left-0 before:w-1 before:rounded-r-full before:bg-accent sm:p-8 lg:p-10">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <Logo />
               <p className="mt-6 max-w-md text-sm leading-7 text-muted sm:text-base">
-                Современная студия, где движение, стиль и комьюнити собираются в
-                одну сильную атмосферу. Здесь дети и подростки развиваются через
-                танец, музыку и уверенность в себе.
+                Студия для тех, кто хочет слышать музыку телом, расти в технике
+                и увереннее занимать пространство — на тренировке, сцене и в жизни.
               </p>
               <div className="mt-8">
                 <ButtonLink href="/#contacts">Записаться</ButtonLink>
@@ -63,15 +62,15 @@ export function SiteFooter() {
 
             <div className="grid gap-8 sm:grid-cols-3">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.26em] text-muted">
+                <p className="text-xs font-semibold uppercase text-muted">
                   Навигация
                 </p>
                 <div className="mt-4 flex flex-col gap-3 text-sm text-foreground">
-                  {mainNavigation.map((item) => (
+                  {mainNavigation.filter((item) => !item.hidden).map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="transition-colors duration-300 hover:text-muted"
+                      className="min-h-11 border-b border-white/10 py-3 transition-colors duration-200 hover:border-accent-strong hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       {item.label}
                     </Link>
@@ -80,7 +79,7 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <p className="text-[11px] uppercase tracking-[0.26em] text-muted">
+                <p className="text-xs font-semibold uppercase text-muted">
                   Контакты
                 </p>
                 <div className="mt-4 flex flex-col gap-3 text-sm leading-6 text-foreground">
@@ -91,7 +90,7 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <p className="text-[11px] uppercase tracking-[0.26em] text-muted">
+                <p className="text-xs font-semibold uppercase text-muted">
                   Соцсети
                 </p>
                 <div className="mt-4 flex flex-col gap-3 text-sm text-foreground">
@@ -101,7 +100,7 @@ export function SiteFooter() {
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-muted"
+                      className="inline-flex min-h-11 items-center gap-2 border-b border-white/10 py-3 transition-colors duration-200 hover:border-accent-strong hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       <SocialIcon label={item.label} />
                       {item.label}
@@ -112,7 +111,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.22em] text-muted sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs uppercase text-muted sm:flex-row sm:items-center sm:justify-between">
             <p>
               {siteSettings.name}. Студия танцев для движения, роста и сильной
               энергии.

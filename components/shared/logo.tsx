@@ -6,18 +6,24 @@ import { cn } from "@/lib/utils";
 
 type LogoProps = {
   className?: string;
+  markClassName?: string;
 };
 
-export function Logo({ className }: LogoProps) {
+export function Logo({ className, markClassName }: LogoProps) {
   return (
     <Link
       href="/"
       className={cn(
-        "inline-flex items-center gap-3 text-left transition-opacity duration-300 hover:opacity-80",
+        "inline-flex min-h-11 items-center gap-3 text-left transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
         className,
       )}
     >
-      <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-white/12 bg-black/40">
+      <span
+        className={cn(
+          "flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-white/20 bg-black",
+          markClassName,
+        )}
+      >
         <Image
           src={siteSettings.logo}
           alt={siteSettings.name}
@@ -26,10 +32,10 @@ export function Logo({ className }: LogoProps) {
         />
       </span>
       <span className="flex flex-col">
-        <span className="font-serif text-lg leading-none tracking-[0.04em] text-foreground">
+        <span className="font-serif text-lg leading-none text-white">
           {siteSettings.name}
         </span>
-        <span className="mt-1 text-[10px] uppercase tracking-[0.24em] text-muted">
+        <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
           {siteSettings.tagline}
         </span>
       </span>

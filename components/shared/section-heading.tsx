@@ -23,10 +23,10 @@ export function SectionHeading({
         className,
       )}
     >
-      <p className="text-[11px] uppercase tracking-[0.28em] text-muted">
+      <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--accent-warm)] before:h-px before:w-10 before:bg-accent-strong">
         {eyebrow}
       </p>
-      <h2 className="mt-4 font-serif text-4xl leading-[0.95] text-foreground sm:text-5xl">
+      <h2 className="mt-5 font-serif text-4xl leading-[0.94] text-white sm:text-6xl">
         {title}
       </h2>
       <p className="mt-5 text-base leading-7 text-muted sm:text-lg">

@@ -9,27 +9,27 @@ import { SiteShell } from "@/components/shared/site-shell";
 
 export function CoachesSection() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section id="team" data-home-chapter className="section-band py-16 sm:py-20 lg:py-28">
       <SiteShell>
         <Reveal>
           <SectionHeading
             eyebrow="Команда"
-            title="У каждого преподавателя уже есть своя маршрутная основа."
-            description="Это не просто карточки. Структура заложена так, чтобы у каждого преподавателя была отдельная страница с фото, описанием и галереей."
+            title="Педагоги задают ритм, стиль и уверенность."
+            description="Каждый педагог работает со своим направлением, но команда держит общий принцип: база, внимание к телу и пространство для собственного характера."
           />
         </Reveal>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+        <div data-scroll-reveal className="mt-10 grid gap-4 lg:grid-cols-3">
           {coaches.map((coach, index) => (
             <Reveal key={coach.slug} delay={0.08 * index}>
-              <Link href={`/coaches/${coach.slug}`} className="block">
+              <Link href={`/coaches/${coach.slug}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
                 <ImagePanel
                   image={coach.image}
                   title={coach.name}
                   description={coach.shortBio}
                   className="min-h-[420px]"
                   overlay={
-                    <div className="absolute right-5 top-5 rounded-full border border-white/15 bg-black/25 px-3 py-2 text-[10px] uppercase tracking-[0.24em] text-white/85">
+                    <div className="absolute right-3 top-3 rounded-full border border-white/15 bg-[#080607]/90 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md">
                       {coach.role}
                     </div>
                   }

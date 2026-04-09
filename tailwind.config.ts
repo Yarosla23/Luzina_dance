@@ -23,20 +23,20 @@ const config: Config = {
         soft: "0 24px 80px rgba(0, 0, 0, 0.38)",
       },
       borderRadius: {
-        xl: "1.25rem",
-        "2xl": "1.75rem",
-        "3xl": "2.5rem",
+        xl: "1rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
       },
       letterSpacing: {
-        hero: "-0.06em",
+        hero: "0",
       },
       backgroundImage: {
         "hero-glow":
-          "radial-gradient(circle at top, rgba(125, 16, 16, 0.34), transparent 38%), radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.05), transparent 18%)",
+          "linear-gradient(115deg, rgba(100, 19, 38, 0.24), transparent 42%)",
       },
     },
   },

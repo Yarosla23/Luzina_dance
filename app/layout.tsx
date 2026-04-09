@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { type ReactNode } from "react";
 
 import { SiteFrame } from "@/components/layout/site-frame";
 import { siteSettings } from "@/lib/site-data";
 
+import "lenis/dist/lenis.css";
 import "./globals.css";
-
-const fontSans = Manrope({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-sans",
-});
-
-const fontSerif = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://luzina-studio.vercel.app"),
@@ -27,7 +16,7 @@ export const metadata: Metadata = {
   description: siteSettings.description,
   keywords: [
     "танцевальная студия",
-    "детская хореография",
+    "уроки танцев",
     "танцевальный лагерь",
     "мерч студии",
     "hip-hop",
@@ -48,7 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontSerif.variable} bg-background font-sans text-foreground antialiased`}
+        className="bg-background font-sans text-foreground antialiased"
       >
         <SiteFrame>{children}</SiteFrame>
       </body>
