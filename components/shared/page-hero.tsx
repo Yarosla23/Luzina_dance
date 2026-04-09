@@ -38,8 +38,8 @@ export function PageHero({
           <Reveal className="max-w-3xl">
             <p
               className={cn(
-                "text-[11px] uppercase tracking-[0.28em]",
-                light ? "text-stone-500" : "text-muted",
+                "text-xs font-semibold uppercase",
+                light ? "text-stone-600" : "text-[color:var(--accent-warm)]",
               )}
             >
               {eyebrow}
@@ -67,7 +67,7 @@ export function PageHero({
 
           {image ? (
             <Reveal delay={0.12}>
-              <div className="relative min-h-[360px] overflow-hidden rounded-[2.25rem] border border-white/10 sm:min-h-[500px]">
+              <div className={cn("relative min-h-[360px] overflow-hidden rounded-2xl sm:min-h-[500px]", light ? "border border-stone-200 bg-white shadow-soft" : "liquid-glass")}>
                 <Image
                   src={image}
                   alt={title}

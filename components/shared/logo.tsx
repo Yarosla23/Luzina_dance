@@ -26,10 +26,10 @@ export function Logo({ className }: LogoProps) {
         />
       </span>
       <span className="flex flex-col">
-        <span className="font-serif text-lg leading-none tracking-[0.04em] text-foreground">
+        <span className="font-serif text-lg leading-none text-foreground">
           {siteSettings.name}
         </span>
-        <span className="mt-1 text-[10px] uppercase tracking-[0.24em] text-muted">
+        <span className="mt-1 text-[10px] uppercase text-muted">
           {siteSettings.tagline}
         </span>
       </span>

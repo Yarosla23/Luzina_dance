@@ -9,13 +9,13 @@ import { SiteShell } from "@/components/shared/site-shell";
 
 export function CoachesSection() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="section-band py-16 sm:py-20 lg:py-24">
       <SiteShell>
         <Reveal>
           <SectionHeading
             eyebrow="Команда"
-            title="У каждого преподавателя уже есть своя маршрутная основа."
-            description="Это не просто карточки. Структура заложена так, чтобы у каждого преподавателя была отдельная страница с фото, описанием и галереей."
+            title="Педагоги задают ритм, стиль и уверенность."
+            description="У каждого преподавателя есть отдельная страница с фото, описанием и галереей, а на главной команда работает как быстрый блок доверия."
           />
         </Reveal>
 
@@ -29,7 +29,7 @@ export function CoachesSection() {
                   description={coach.shortBio}
                   className="min-h-[420px]"
                   overlay={
-                    <div className="absolute right-5 top-5 rounded-full border border-white/15 bg-black/25 px-3 py-2 text-[10px] uppercase tracking-[0.24em] text-white/85">
+                    <div className="absolute right-5 top-5 rounded-full border border-white/15 bg-black/25 px-3 py-2 text-[10px] font-semibold uppercase text-white/85 backdrop-blur-xl">
                       {coach.role}
                     </div>
                   }

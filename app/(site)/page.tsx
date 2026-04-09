@@ -6,6 +6,7 @@ import { CtaSection } from "@/components/sections/home/cta-section";
 import { DirectionsSection } from "@/components/sections/home/directions-section";
 import { HomeHero } from "@/components/sections/home/home-hero";
 import { KidsSection } from "@/components/sections/home/kids-section";
+import { LocationSection } from "@/components/sections/home/location-section";
 import { MediaSection } from "@/components/sections/home/media-section";
 import { PricingSection } from "@/components/sections/home/pricing-section";
 import { ScheduleSection } from "@/components/sections/home/schedule-section";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <KidsSection />
       <MediaSection />
       <CtaSection />
+      <LocationSection />
     </main>
   );
 }

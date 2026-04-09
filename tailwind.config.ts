@@ -32,11 +32,11 @@ const config: Config = {
         serif: ["var(--font-serif)"],
       },
       letterSpacing: {
-        hero: "-0.06em",
+        hero: "0",
       },
       backgroundImage: {
         "hero-glow":
-          "radial-gradient(circle at top, rgba(125, 16, 16, 0.34), transparent 38%), radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.05), transparent 18%)",
+          "linear-gradient(115deg, rgba(169, 58, 43, 0.18), transparent 38%), linear-gradient(245deg, rgba(120, 209, 199, 0.1), transparent 32%)",
       },
     },
   },

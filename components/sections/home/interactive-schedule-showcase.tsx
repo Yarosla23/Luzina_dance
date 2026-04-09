@@ -33,14 +33,11 @@ export function InteractiveScheduleShowcase() {
   const hasFilteredSessions = visibleSessions.length > 0;
 
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-white/12 bg-white/[0.05] p-4 backdrop-blur-xl sm:p-6 lg:p-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(178,24,24,0.24),transparent_70%)]" />
-      <div className="pointer-events-none absolute -right-24 top-10 h-56 w-56 rounded-full bg-white/5 blur-3xl" />
-
+    <div className="liquid-glass relative overflow-hidden rounded-2xl p-4 sm:p-6 lg:p-8">
       <div className="relative flex flex-col gap-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm uppercase tracking-[0.24em] text-muted">
+            <p className="text-sm font-semibold uppercase text-muted">
               Переключение по дням
             </p>
             <h3 className="mt-3 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl">
@@ -104,7 +101,7 @@ export function InteractiveScheduleShowcase() {
                     </div>
                     <span
                       className={cn(
-                        "rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.24em]",
+                        "rounded-full border px-3 py-1 text-xs font-semibold uppercase",
                         isActive
                           ? "border-white/20 bg-white/10 text-foreground"
                           : "border-white/10 bg-white/5 text-muted",
@@ -120,12 +117,12 @@ export function InteractiveScheduleShowcase() {
 
           <div className="grid gap-5">
             <div className="grid gap-5">
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-white/[0.06] p-6 sm:p-7">
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(178,24,24,0.18),transparent_58%)]" />
+              <div className="relative overflow-hidden rounded-2xl border border-white/14 bg-white/[0.06] p-6 sm:p-7">
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(224,77,60,0.16),transparent_58%)]" />
                 <div className="relative flex flex-col gap-6">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.24em] text-muted">
+                      <p className="text-sm font-semibold uppercase text-muted">
                         Активный день
                       </p>
                       <h4 className="mt-3 font-serif text-4xl text-foreground">
@@ -164,7 +161,7 @@ export function InteractiveScheduleShowcase() {
                               <div>
                                 <div className="flex flex-wrap items-center gap-3">
                                   <p className="text-2xl text-foreground">{session.time}</p>
-                                  <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-muted">
+                                  <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs font-semibold uppercase text-muted">
                                     Слот {index + 1}
                                   </span>
                                 </div>

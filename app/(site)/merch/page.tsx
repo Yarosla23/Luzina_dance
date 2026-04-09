@@ -50,7 +50,7 @@ export default function MerchPage() {
               <ZoomableMerchImage
                 image={featuredGallery[0].image}
                 alt={featuredGallery[0].title}
-                className="min-h-[320px] rounded-[2rem] border border-white/10 bg-white/[0.03] sm:min-h-[460px] sm:rounded-[2.25rem] lg:min-h-[580px]"
+                className="liquid-glass min-h-[320px] rounded-2xl sm:min-h-[460px] lg:min-h-[580px]"
                 sizes="(max-width: 1024px) 100vw, 52vw"
                 overlay={
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.04),rgba(10,10,10,0.48))]" />
@@ -60,9 +60,9 @@ export default function MerchPage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 sm:rounded-[2.25rem] sm:p-8">
+              <div className="liquid-glass rounded-2xl p-5 sm:p-8">
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-full border border-[#8e2323]/40 bg-[#8e2323]/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[#f0d4d4]">
+                  <span className="rounded-full border border-[#8e2323]/40 bg-[#8e2323]/10 px-3 py-1 text-xs font-semibold uppercase text-[#f0d4d4]">
                     {merchItem.status}
                   </span>
                 </div>
@@ -75,16 +75,16 @@ export default function MerchPage() {
                 </p>
 
                 <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
-                  <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-muted">
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-5">
+                    <p className="text-xs font-semibold uppercase text-muted">
                       Формат
                     </p>
                     <p className="mt-3 text-sm leading-7 text-foreground">
                       Тренировки, съемки, сцена и собранный повседневный образ.
                     </p>
                   </div>
-                  <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-muted">
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-5">
+                    <p className="text-xs font-semibold uppercase text-muted">
                       Размеры
                     </p>
                     <p className="mt-3 text-sm leading-7 text-foreground">
@@ -93,8 +93,8 @@ export default function MerchPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-[1.5rem] border border-[#8e2323]/35 bg-[linear-gradient(180deg,rgba(142,35,35,0.18),rgba(255,255,255,0.03))] p-5 sm:rounded-[1.75rem] sm:p-6">
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-[#f0d4d4]">
+                <div className="mt-4 rounded-2xl border border-[#8e2323]/35 bg-[linear-gradient(180deg,rgba(142,35,35,0.18),rgba(255,255,255,0.03))] p-5 sm:p-6">
+                  <p className="text-xs font-semibold uppercase text-[#f0d4d4]">
                     Цена и наличие
                   </p>
 
@@ -129,7 +129,7 @@ export default function MerchPage() {
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             {featuredGallery.slice(1).map((item, index) => (
               <Reveal key={item.title} delay={0.06 * (index + 1)}>
-                <figure className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
+                <figure className="liquid-glass flex h-full flex-col overflow-hidden rounded-2xl">
                   <ZoomableMerchImage
                     image={item.image}
                     alt={item.title}
@@ -148,10 +148,10 @@ export default function MerchPage() {
           </div>
 
           <Reveal>
-            <div className="mt-4 overflow-hidden rounded-[2rem] border border-[#8e2323]/30 bg-[linear-gradient(180deg,rgba(142,35,35,0.16),rgba(255,255,255,0.03))]">
+            <div className="liquid-glass mt-4 overflow-hidden rounded-2xl">
               <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
                 <div className="p-6 sm:p-8">
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-[#f0d4d4]">
+                  <p className="text-xs font-semibold uppercase text-[#f0d4d4]">
                     Доступно в двух цветах
                   </p>
                   <h3 className="mt-4 font-serif text-3xl text-foreground sm:text-4xl">
@@ -201,7 +201,7 @@ export default function MerchPage() {
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             {detailGallery.map((item, index) => (
               <Reveal key={item.title} delay={0.08 * (index + 1)}>
-                <figure className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
+                <figure className="liquid-glass flex h-full flex-col overflow-hidden rounded-2xl">
                   <ZoomableMerchImage
                     image={item.image}
                     alt={item.title}

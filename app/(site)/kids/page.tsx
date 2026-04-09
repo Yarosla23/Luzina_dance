@@ -53,7 +53,7 @@ export default function KidsPage() {
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {kidsGroups.map((group, index) => (
               <Reveal key={group.id} delay={0.08 * index}>
-                <article className="overflow-hidden rounded-[2rem] border border-stone-200 bg-white">
+                <article className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-[0_24px_80px_rgba(20,18,15,0.08)]">
                   <div className="relative h-72">
                     <ImagePanel
                       image={group.image}
@@ -64,7 +64,7 @@ export default function KidsPage() {
                     />
                   </div>
                   <div className="p-6">
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-stone-500">
+                    <p className="text-xs font-semibold uppercase text-stone-500">
                       {group.title},{" "}
                       {group.teachers.includes(" и ") ? "педагоги" : "педагог"}:{" "}
                       {group.teachers}
@@ -86,8 +86,8 @@ export default function KidsPage() {
         <SiteShell>
           <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <Reveal>
-              <div className="rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-stone-500">
+              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-[0_24px_80px_rgba(20,18,15,0.08)] sm:p-8">
+                <p className="text-xs font-semibold uppercase text-stone-500">
                   Что будет на занятиях
                 </p>
                 <h2 className="mt-4 font-serif text-4xl text-stone-900">
@@ -97,13 +97,13 @@ export default function KidsPage() {
                   {kidsLessonFocus.map((item) => (
                     <div
                       key={item}
-                      className="rounded-[1.25rem] border border-stone-200 bg-stone-50 px-4 py-4 text-sm font-medium text-stone-700"
+                      className="rounded-xl border border-stone-200 bg-stone-50 px-4 py-4 text-sm font-medium text-stone-700"
                     >
                       {item}
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 rounded-[1.5rem] bg-stone-900 px-5 py-4 text-sm leading-7 text-stone-100">
+                <div className="mt-8 rounded-xl bg-stone-900 px-5 py-4 text-sm leading-7 text-stone-100">
                   {siteSettings.signUpNote}
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function KidsPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <Reveal delay={0.08}>
-                <div className="overflow-hidden rounded-[2rem] border border-stone-200 bg-white">
+                <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-[0_24px_80px_rgba(20,18,15,0.08)]">
                   <div className="relative min-h-[420px]">
                     <ImagePanel
                       image={kidsMedia.schedulePoster}
@@ -124,7 +124,7 @@ export default function KidsPage() {
                 </div>
               </Reveal>
               <Reveal delay={0.16}>
-                <div className="overflow-hidden rounded-[2rem] border border-stone-200 bg-white">
+                <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-[0_24px_80px_rgba(20,18,15,0.08)]">
                   <div className="relative min-h-[420px]">
                     <ImagePanel
                       image={kidsMedia.pricingPoster}

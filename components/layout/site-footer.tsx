@@ -44,7 +44,7 @@ export function SiteFooter() {
   return (
     <footer
       id="contacts"
-      className="border-t border-white/10 pb-8sm:pb-10 sm:pt-20"
+      className="border-t border-white/10 pb-8 pt-16 sm:pb-10 sm:pt-20"
     >
       <SiteShell>
         <div className="surface-panel overflow-hidden p-6 sm:p-8 lg:p-10">
@@ -63,7 +63,7 @@ export function SiteFooter() {
 
             <div className="grid gap-8 sm:grid-cols-3">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.26em] text-muted">
+                <p className="text-xs font-semibold uppercase text-muted">
                   Навигация
                 </p>
                 <div className="mt-4 flex flex-col gap-3 text-sm text-foreground">
@@ -80,7 +80,7 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <p className="text-[11px] uppercase tracking-[0.26em] text-muted">
+                <p className="text-xs font-semibold uppercase text-muted">
                   Контакты
                 </p>
                 <div className="mt-4 flex flex-col gap-3 text-sm leading-6 text-foreground">
@@ -91,7 +91,7 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <p className="text-[11px] uppercase tracking-[0.26em] text-muted">
+                <p className="text-xs font-semibold uppercase text-muted">
                   Соцсети
                 </p>
                 <div className="mt-4 flex flex-col gap-3 text-sm text-foreground">
@@ -112,7 +112,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.22em] text-muted sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs uppercase text-muted sm:flex-row sm:items-center sm:justify-between">
             <p>
               {siteSettings.name}. Студия танцев для движения, роста и сильной
               энергии.

@@ -15,7 +15,6 @@ import merchPantsImageSecondary from "@/media/merch/photo_2026-04-09_00-46-31.jp
 import merchPantsImageTeam from "@/media/merch/photo_2026-04-09_00-46-40.jpg";
 import merchPantsImageThird from "@/media/merch/photo_2026-04-09_00-46-42.jpg";
 import merchPantsImageFourth from "@/media/merch/photo_2026-04-09_00-46-49.jpg";
-import merchPantsImageFifth from "@/media/merch/photo_2026-04-09_00-46-52.jpg";
 import merchPantsImageSixth from "@/media/merch/photo_2026-04-09_00-47-01.jpg";
 import yanaImagePrimary from "@/media/yana1.jpg";
 import yanaImageSecondary from "@/media/yana2.jpg";
@@ -56,6 +55,48 @@ export const studioHighlights = [
   "детские и подростковые группы",
   "мягкая, но собранная подача",
   "комьюнити, движение и стиль",
+] as const;
+
+export const homepageStats = [
+  { value: "3", label: "основных направления" },
+  { value: "6", label: "дней занятий в неделю" },
+  { value: "9+", label: "возраст младших групп" },
+] as const;
+
+export const studioCapabilities = [
+  {
+    title: "Группы под возраст",
+    description:
+      "Расписание разделено по возрасту и уровню, чтобы ученики попадали в подходящий темп без лишнего давления.",
+  },
+  {
+    title: "Педагоги с характером",
+    description:
+      "У каждого направления свой преподаватель, визуальный стиль и понятная траектория роста внутри студии.",
+  },
+  {
+    title: "Съемки и комьюнити",
+    description:
+      "Помимо классов есть практика, контент, лагерные форматы и среда, где движение становится частью жизни.",
+  },
+] as const;
+
+export const studioTestimonials = [
+  {
+    quote:
+      "Ребенок стал увереннее, быстрее запоминает связки и с удовольствием ждет каждую тренировку.",
+    author: "Родитель ученицы",
+  },
+  {
+    quote:
+      "На занятиях чувствуется команда: не просто повторяем движения, а учимся слышать музыку и себя.",
+    author: "Участница группы",
+  },
+  {
+    quote:
+      "Понятное расписание, сильная атмосфера и красивые съемки после занятий. Студия живет своим стилем.",
+    author: "Ученик студии",
+  },
 ] as const;
 
 // Меняй тексты главной и карточек направлений здесь.
@@ -220,6 +261,65 @@ export const campInfo = {
   title: "Танцевальный лагерь",
   description:
     "Танцевальный лагерь — это пространство движения, творчества, новых знакомств и ярких впечатлений. Здесь участники смогут погрузиться в атмосферу танца, развития и командной энергии.",
+  heroTitle: "Танцевальный лагерь с summer energy, golden hour и сильным движением.",
+  heroDescription:
+    "Dance Soul Camp собирает лето вокруг танца: дневные классы, sunset-съемки, музыка, команда и ощущение свободы, которое остается после смены надолго.",
+  heroImage: yanaImageSecondary,
+  heroStats: [
+    { value: "5 дней", label: "интенсив и атмосфера" },
+    { value: "2025–2026", label: "roadmap смен и сезонов" },
+    { value: "12+", label: "подростки и молодежные группы" },
+  ],
+  timeline: [
+    {
+      id: "2025-open-call",
+      period: "Май 2025",
+      title: "Open Call / первый анонс",
+      status: "архив",
+      note: "Запуск summer-листа, сбор первой команды и анонс формата лагеря.",
+      image: yanaImagePrimary,
+    },
+    {
+      id: "2025-city-session",
+      period: "Июль 2025",
+      title: "City Session",
+      status: "архив",
+      note: "Классы днем, прогулки, jam-вечер и тестовая съемочная программа.",
+      image: dimaImagePrimary,
+    },
+    {
+      id: "2025-sunset-week",
+      period: "Август 2025",
+      title: "Sunset Week",
+      status: "архив",
+      note: "Неделя с упором на хореографию, команду и визуальный контент в golden hour.",
+      image: yanaImageSecondary,
+    },
+    {
+      id: "2026-early-list",
+      period: "Февраль 2026",
+      title: "Early List",
+      status: "ранний лист",
+      note: "Предзапись для тех, кто хочет первыми получить даты, формат и бронь.",
+      image: evaImagePrimary,
+    },
+    {
+      id: "2026-main-camp",
+      period: "Июнь 2026",
+      title: "Main Summer Camp",
+      status: "бронь скоро",
+      note: "Основная летняя смена: техника, freestyle, съемки, recovery и комьюнити-программа.",
+      image: childrenImage,
+    },
+    {
+      id: "2026-festival-finale",
+      period: "Август 2026",
+      title: "Festival Finale",
+      status: "планирование",
+      note: "Финальная смена сезона с большими постановками, showcase-днем и вечерним closing jam.",
+      image: dimaImageSecondary,
+    },
+  ],
   audience: [
     "для тех, кто любит танец и хочет провести время в сильной творческой среде",
     "для детей и подростков, которым важны движение, общение и командный опыт",
@@ -232,12 +332,180 @@ export const campInfo = {
     "командные активности",
     "вечерние события",
   ],
+  pillars: [
+    {
+      title: "Программа дня",
+      description:
+        "Утренний body prep, дневные классы по направлениям и вечерние сборки, где танец сочетается с отдыхом и общением.",
+    },
+    {
+      title: "Атмосфера лагеря",
+      description:
+        "Летний ритм, light sunset mood, музыка, воздух и комьюнити, в котором комфортно расти и раскрываться.",
+    },
+    {
+      title: "Съемки и контент",
+      description:
+        "Контент-дни и короткие съемочные сессии помогают закреплять материал и оставляют после смены сильный визуальный след.",
+    },
+    {
+      title: "Педагоги и кураторы",
+      description:
+        "Ведущие студии собирают программу так, чтобы в ней были и техника, и подача, и место для свободы движения.",
+    },
+  ],
+  formatCards: [
+    {
+      title: "Локация",
+      description:
+        "Пространство под лагерь подбирается с упором на свет, воздух, удобные залы и зоны для отдыха между классами.",
+    },
+    {
+      title: "Формат участия",
+      description:
+        "Подходит тем, кто хочет не просто поездку, а собранную летнюю среду с танцем, командой и визуальной атмосферой.",
+    },
+    {
+      title: "Ритм смены",
+      description:
+        "Каждый день строится вокруг баланса: тренировка, практика, свободное время, совместные активности и вечерний вайб.",
+    },
+    {
+      title: "Что можно менять позже",
+      description:
+        "Даты, стоимость, точную локацию и условия участия удобно обновлять точечно, не переписывая структуру страницы.",
+    },
+  ],
+  editorialCards: [
+    {
+      label: "Program / format",
+      title: "Не просто сбор, а летняя история вокруг танца.",
+      description:
+        "Dance Soul Camp задуман как смена, где у танца есть сцена, у команды есть энергия, а у каждого дня есть свой темп: от собранной утренней подготовки до мягкого заката после класса.",
+      image: childrenImage,
+    },
+    {
+      label: "Sunset / community",
+      title: "Golden hour, съемки, jam и ощущение свободы.",
+      description:
+        "Лагерь собирает атмосферу фестивального лета: яркие классы, теплый свет, сильные кадры, музыка на фоне и команда, которая проживает смену вместе, а не параллельно.",
+      image: dimaImagePrimary,
+    },
+  ],
+  storyScenes: [
+    {
+      id: "scene-arrival",
+      kicker: "Scene 01 / arrival",
+      title: "Заезд начинается как мягкий вход в общий ритм.",
+      description:
+        "Первый день не перегружает. Ребята знакомятся, настраиваются на темп смены, входят в пространство и постепенно собираются в одну команду.",
+      image: childrenImage,
+      tags: ["welcome", "team", "warm-up"],
+      note: "Мягкий старт нужен, чтобы не ломать состояние, а переводить в движение.",
+      metrics: [
+        { label: "tempo", value: "slow rise" },
+        { label: "focus", value: "team sync" },
+      ],
+    },
+    {
+      id: "scene-training",
+      kicker: "Scene 02 / training",
+      title: "Днем лагерь переключается в плотную работу с телом и подачей.",
+      description:
+        "Классы и практика идут блоками: body prep, хореография, музыкальность, паузы на восстановление и повтор материала в понятном ритме.",
+      image: dimaImagePrimary,
+      tags: ["groove", "technique", "practice"],
+      note: "Важен баланс между интенсивом и воздухом, иначе лагерь превращается в обычный интенсив.",
+      metrics: [
+        { label: "blocks", value: "3 phases" },
+        { label: "energy", value: "high / clean" },
+      ],
+    },
+    {
+      id: "scene-content",
+      kicker: "Scene 03 / content",
+      title: "К вечеру история становится визуальной: кадры, sunset и ощущение свободы.",
+      description:
+        "Вторая половина дня работает на атмосферу. Съемки, короткие jams, разговоры и golden hour собирают тот самый образ лагеря, который хочется пересматривать.",
+      image: yanaImageSecondary,
+      tags: ["golden hour", "camera", "jam"],
+      note: "Контент здесь не отдельно от лагеря, а часть общего переживания смены.",
+      metrics: [
+        { label: "light", value: "sunset" },
+        { label: "mood", value: "open flow" },
+      ],
+    },
+  ],
   placeholders: {
-    dates: "Даты скоро",
-    price: "Стоимость скоро",
-    location: "Локация скоро",
+    dates: "Июнь–август 2026",
+    price: "Стоимость откроем вместе с бронью",
+    location: "Локация анонсируется отдельным релизом",
   },
   gallery: [childrenImage, yanaImageSecondary, evaImagePrimary, dimaImageSecondary],
+  galleryHighlights: [
+    {
+      title: "Утренний разогрев",
+      description:
+        "День начинается мягко, но собранно: body prep, база и настрой на работу в команде.",
+      image: evaImagePrimary,
+      size: "large",
+    },
+    {
+      title: "Командная энергия",
+      description:
+        "В лагерной программе важны не только классы, но и чувство общей волны внутри смены.",
+      image: childrenImage,
+      size: "tall",
+    },
+    {
+      title: "Golden hour practice",
+      description:
+        "Короткие sunset-сессии создают ту самую летнюю атмосферу и сильный визуальный след.",
+      image: yanaImagePrimary,
+      size: "compact",
+    },
+    {
+      title: "Сценическая подача",
+      description:
+        "Хореография, музыкальность и уверенность в кадре собираются в один ритм.",
+      image: dimaImageSecondary,
+      size: "compact",
+    },
+    {
+      title: "После класса",
+      description:
+        "В лагере важны паузы, воздух, разговоры, музыка и все, что делает смену живой.",
+      image: evaImageSecondary,
+      size: "wide",
+    },
+  ],
+  moodGallery: [
+    {
+      title: "Sunrise flow",
+      description: "Плавный старт дня с вниманием к телу, дыханию и пластике.",
+      image: childrenImage,
+    },
+    {
+      title: "Studio heat",
+      description: "Интенсивные классы, где техника встречается с характером и драйвом.",
+      image: dimaImagePrimary,
+    },
+    {
+      title: "Camp portraits",
+      description: "Люди, настроение и кадры, которые хочется пересматривать после смены.",
+      image: yanaImageSecondary,
+    },
+    {
+      title: "Evening jam",
+      description: "Свободное движение, музыка и тот самый фестивальный летний вайб.",
+      image: evaImageSecondary,
+    },
+  ],
+  cta: {
+    title: "Забронируй интерес к следующей смене уже сейчас.",
+    description:
+      "Можно оставить заявку заранее, чтобы первыми получить даты, формат участия, локацию и старт бронирования по Dance Soul Camp.",
+  },
 } as const;
 
 export const merchContact = {
@@ -310,3 +578,13 @@ export type Direction = (typeof danceDirections)[number];
 export type KidsGroup = (typeof kidsGroups)[number];
 export type MerchItem = (typeof merchItems)[number];
 export type CampGalleryItem = StaticImageData;
+export type CampTimelineItem = {
+  id: string;
+  period: string;
+  title: string;
+  status: "архив" | "ранний лист" | "бронь скоро" | "планирование";
+  note: string;
+  image: StaticImageData;
+};
+export type CampPillar = (typeof campInfo.pillars)[number];
+export type CampStoryScene = (typeof campInfo.storyScenes)[number];

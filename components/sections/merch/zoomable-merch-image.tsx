@@ -77,15 +77,15 @@ export function ZoomableMerchImage({
 
       {isOpen ? (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md p-4 sm:p-8"
+          className="fixed inset-0 z-50 bg-black/95 p-4 backdrop-blur-md sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={alt}
           onClick={() => setIsOpen(false)}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,18,18,0.18),rgba(0,0,0,0.94)_60%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(224,77,60,0.12),transparent_36%),linear-gradient(245deg,rgba(120,209,199,0.1),transparent_34%)]" />
 
-          <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/55 p-1 text-white">
+          <div className="liquid-glass absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full p-1 text-white">
             <button
               type="button"
               aria-label="Уменьшить изображение"
@@ -99,7 +99,7 @@ export function ZoomableMerchImage({
               <Minus className="h-4 w-4" />
             </button>
 
-            <span className="min-w-12 text-center text-xs uppercase tracking-[0.18em] text-white/80">
+            <span className="min-w-12 text-center text-xs uppercase text-white/80">
               {Math.round(zoom * 100)}%
             </span>
 
@@ -124,7 +124,7 @@ export function ZoomableMerchImage({
               event.stopPropagation();
               setIsOpen(false);
             }}
-            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white transition hover:bg-black/70"
+            className="liquid-glass absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition hover:bg-black/70"
           >
             <X className="h-5 w-5" />
           </button>
