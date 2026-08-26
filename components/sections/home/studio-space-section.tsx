@@ -1,30 +1,85 @@
-import { MediaPlaceholder } from "@/components/shared/media-placeholder";
+import studioEntranceImage from "@/media/studio/photo_2026-08-27_16-52-26.jpg";
+import studioShelfImage from "@/media/studio/photo_2026-08-27_16-52-28.jpg";
+import studioWardrobeImage from "@/media/studio/photo_2026-08-27_16-52-31.jpg";
+import studioWaitingAreaImage from "@/media/studio/photo_2026-08-27_16-52-33.jpg";
+import studioAwardsImage from "@/media/studio/photo_2026-08-27_16-52-44.jpg";
+import studioEquipmentImage from "@/media/studio/photo_2026-08-27_16-52-46.jpg";
+import studioSoundImage from "@/media/studio/photo_2026-08-27_16-52-48.jpg";
+import studioRedLightImage from "@/media/studio/photo_2026-08-27_16-52-54.jpg";
+import studioPropsImage from "@/media/studio/photo_2026-08-27_16-52-55.jpg";
+import studioMainHallImage from "@/media/studio/photo_2026-08-27_16-53-00.jpg";
+
 import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SiteShell } from "@/components/shared/site-shell";
+import { StudioPhotoGallery } from "@/components/sections/home/studio-photo-gallery";
 
-const studioMediaSlots = [
+const studioPhotos = [
   {
-    label: "Зал студии",
-    note: "Широкий кадр с пространством и светом",
-    className: "min-h-[430px] sm:min-h-[560px] lg:col-span-7 lg:row-span-2",
+    image: studioMainHallImage,
+    title: "Главный зал",
+    alt: "Танцевальный зал с зеркальной стеной и красным светом",
+    previewClassName:
+      "min-h-[480px] sm:col-span-2 lg:col-span-7 lg:row-span-2 lg:min-h-0",
+    previewSizes: "(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 58vw",
   },
   {
-    label: "До начала класса",
-    note: "Детали зала перед тренировкой",
-    className: "min-h-[260px] lg:col-span-5",
+    image: studioEntranceImage,
+    title: "Входная зона",
+    alt: "Входная зона танцевальной студии с бордовой стеной",
+    previewClassName: "min-h-[360px] lg:col-span-5 lg:min-h-0",
+    previewSizes: "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 42vw",
   },
   {
-    label: "Класс в движении",
-    note: "Живой кадр с тренировки или репетиции",
-    className: "min-h-[340px] lg:col-span-5",
+    image: studioRedLightImage,
+    title: "Световая сцена",
+    alt: "Красное сценическое освещение в танцевальном зале",
+    previewClassName: "min-h-[360px] lg:col-span-5 lg:min-h-0",
+    previewSizes: "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 42vw",
   },
   {
-    label: "После репетиции",
-    note: "Backstage команды без постановочной позы",
-    className: "min-h-[280px] lg:col-span-12",
+    image: studioWaitingAreaImage,
+    title: "Зона ожидания",
+    alt: "Зона ожидания с креслами рядом с танцевальным залом",
+    previewClassName: "min-h-[340px] lg:col-span-4 lg:min-h-0",
+    previewSizes: "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
   },
-] as const;
+  {
+    image: studioWardrobeImage,
+    title: "Гардероб",
+    alt: "Гардеробная зона танцевальной студии",
+    previewClassName: "min-h-[340px] lg:col-span-4 lg:min-h-0",
+    previewSizes: "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: studioAwardsImage,
+    title: "История студии",
+    alt: "Кубки и дипломы учеников танцевальной студии",
+    previewClassName:
+      "min-h-[340px] sm:col-span-2 lg:col-span-4 lg:min-h-0",
+    previewSizes: "(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 33vw",
+  },
+  {
+    image: studioShelfImage,
+    title: "Детали пространства",
+    alt: "Полка с принадлежностями в танцевальной студии",
+  },
+  {
+    image: studioEquipmentImage,
+    title: "Инвентарь",
+    alt: "Тренировочный инвентарь у стены танцевального зала",
+  },
+  {
+    image: studioSoundImage,
+    title: "Звук и свет",
+    alt: "Акустическая система и световое оборудование танцевального зала",
+  },
+  {
+    image: studioPropsImage,
+    title: "Для занятий",
+    alt: "Сложенный инвентарь для занятий в танцевальной студии",
+  },
+];
 
 export function StudioSpaceSection() {
   return (
@@ -39,8 +94,8 @@ export function StudioSpaceSection() {
             <div data-scroll-reveal>
               <SectionHeading
                 eyebrow="Пространство"
-                title="Сначала почувствуй место. Потом — своё движение в нём."
-                description="Ниже оставлены точные места для будущей съёмки студии. Форматы кадров уже заданы, поэтому новые фотографии легко встанут в композицию без переделки страницы."
+                title="Зал, в котором движение становится своим."
+                description="Зеркала, свободный пол и два сценария света — нейтральный для регулярных занятий и красный для съемок и атмосферы."
               />
             </div>
           </Reveal>
@@ -50,28 +105,13 @@ export function StudioSpaceSection() {
             className="border-l border-white/14 pl-6 lg:ml-auto lg:max-w-md"
           >
             <p className="font-serif text-2xl leading-tight text-white sm:text-3xl">
-              Свет, зеркала, рабочий момент и тишина после музыки — четыре кадра
-              одной атмосферы.
+              Пространство продумано и для работы над техникой, и для кадров,
+              которые хочется сохранить.
             </p>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-12 lg:auto-rows-[minmax(130px,auto)]">
-          {studioMediaSlots.map((slot) => (
-            <div
-              key={slot.label}
-              data-space-mock
-              data-scroll-reveal
-              className={`${slot.className} will-change-transform`}
-            >
-              <MediaPlaceholder
-                label={slot.label}
-                note={slot.note}
-                className="h-full min-h-[inherit]"
-              />
-            </div>
-          ))}
-        </div>
+        <StudioPhotoGallery photos={studioPhotos} />
       </SiteShell>
     </section>
   );

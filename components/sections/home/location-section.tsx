@@ -5,10 +5,10 @@ import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SiteShell } from "@/components/shared/site-shell";
 
-const studioAddress = "Севастополь, ул. Степаненко, 8";
-const mapQuery = encodeURIComponent(studioAddress);
-const yandexMapsUrl = `https://yandex.ru/maps/?text=${mapQuery}`;
-const yandexWidgetUrl = `https://yandex.ru/map-widget/v1/?text=${mapQuery}&z=17`;
+const studioAddress = "Севастополь, проспект Генерала Острякова, 38";
+const yandexMapsUrl = "https://yandex.ru/maps/-/CTDxBM0f";
+const yandexWidgetUrl =
+  "https://yandex.ru/map-widget/v1/?ll=33.517631%2C44.583251&mode=search&oid=51244316278&ol=biz&z=18.45";
 
 export function LocationSection() {
   return (
@@ -18,7 +18,7 @@ export function LocationSection() {
           <SectionHeading
             eyebrow="Локация"
             title="Встретимся в студии."
-            description="Мы находимся на улице Степаненко, 8. Откройте маршрут в Яндекс Картах или напишите нам перед первым занятием."
+            description="Мы находимся на проспекте Генерала Острякова, 38. Откройте маршрут в Яндекс Картах или напишите нам перед первым занятием."
           />
         </Reveal>
 
@@ -53,7 +53,7 @@ export function LocationSection() {
                   <div>
                     <p className="text-sm text-foreground">Студия уже отмечена на карте</p>
                     <p className="mt-1 text-xs uppercase text-muted">
-                      Танцевальная Душа · Степаненко 8
+                      Танцевальная Душа · Генерала Острякова 38
                     </p>
                   </div>
                 </div>

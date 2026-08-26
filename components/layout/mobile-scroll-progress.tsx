@@ -58,7 +58,7 @@ export function MobileScrollProgress() {
     >
       <span
         ref={progressRef}
-        className="block h-full origin-left scale-x-0 bg-gradient-to-r from-accent to-accent-strong shadow-[0_0_12px_rgba(168,25,61,0.8)] will-change-transform"
+        className="block h-full origin-left scale-x-0 bg-gradient-to-r from-accent to-accent-strong shadow-[0_0_12px_rgba(185,30,75,0.8)] will-change-transform"
       />
     </div>
   );

@@ -56,7 +56,7 @@ export function CampStorySections() {
                   )}
                 >
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#d05a73]">
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#d95a78]">
                       {scene.kicker}
                     </p>
                     <h2 className="mt-6 font-serif text-4xl leading-[0.9] text-white sm:text-6xl">

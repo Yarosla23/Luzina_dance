@@ -131,7 +131,7 @@ export function SiteHeader() {
                     {isCurrentPage ? (
                       <span
                         aria-hidden="true"
-                        className="h-2 w-2 rounded-full bg-accent-strong shadow-[0_0_12px_rgba(168,25,61,0.75)]"
+                        className="h-2 w-2 rounded-full bg-accent-strong shadow-[0_0_12px_rgba(185,30,75,0.75)]"
                       />
                     ) : null}
                   </Link>

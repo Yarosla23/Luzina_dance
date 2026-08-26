@@ -83,14 +83,14 @@ export function DanceMotionField({
         />
         <defs>
           <linearGradient id="dancePathWarm" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0%" stopColor="#641326" stopOpacity="0" />
-            <stop offset="46%" stopColor="#d05a73" stopOpacity="0.95" />
+            <stop offset="0%" stopColor="#8b1538" stopOpacity="0" />
+            <stop offset="46%" stopColor="#d95a78" stopOpacity="0.95" />
             <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="dancePathCool" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-            <stop offset="55%" stopColor="#a8193d" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#641326" stopOpacity="0" />
+            <stop offset="55%" stopColor="#b91e4b" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#8b1538" stopOpacity="0" />
           </linearGradient>
         </defs>
       </motion.svg>
@@ -98,7 +98,7 @@ export function DanceMotionField({
       {beatDots.map((dot, index) => (
         <motion.span
           key={`${dot.x}-${dot.y}`}
-          className="absolute h-2 w-2 rounded-full border border-white/60 bg-accent-strong shadow-[0_0_24px_rgba(168,25,61,0.55)]"
+          className="absolute h-2 w-2 rounded-full border border-white/60 bg-accent-strong shadow-[0_0_24px_rgba(185,30,75,0.55)]"
           style={{ left: dot.x, top: dot.y }}
           initial={shouldReduceMotion ? false : { opacity: 0.18, scale: 0.82 }}
           animate={

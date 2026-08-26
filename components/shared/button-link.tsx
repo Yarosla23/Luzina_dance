@@ -11,7 +11,7 @@ const buttonLinkVariants = cva(
     variants: {
       variant: {
         primary:
-          "border-accent-strong bg-accent text-white hover:-translate-y-0.5 hover:bg-accent-strong hover:shadow-[0_18px_50px_rgba(100,19,38,0.42)]",
+          "border-accent-strong bg-accent text-white hover:-translate-y-0.5 hover:bg-accent-strong hover:shadow-[0_18px_50px_rgba(139,21,56,0.42)]",
         secondary:
           "border-white/30 bg-transparent text-foreground hover:border-white hover:bg-white hover:text-black",
       },

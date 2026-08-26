@@ -90,7 +90,7 @@ export function ZoomableMerchImage({
           aria-label={alt}
           onClick={() => setIsOpen(false)}
         >
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(100,19,38,0.2),transparent_42%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(139,21,56,0.2),transparent_42%)]" />
 
           <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#13090c] p-1 text-white">
             <button

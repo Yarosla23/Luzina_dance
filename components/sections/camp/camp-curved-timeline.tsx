@@ -2,7 +2,6 @@
 
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -13,6 +12,8 @@ import { useRef } from "react";
 import { type CampTimelineItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
+import { CampTimelineFlow } from "@/components/sections/camp/camp-timeline-flow";
+
 type CampTimelineProps = {
   items: readonly CampTimelineItem[];
 };
@@ -20,8 +21,8 @@ type CampTimelineProps = {
 const statusClassNames: Record<CampTimelineItem["status"], string> = {
   архив: "border-white/20 bg-black/45 text-white/70",
   "ранний лист": "border-white/35 bg-white/10 text-white",
-  "бронь скоро": "border-[#a8193d] bg-[#641326]/90 text-white",
-  планирование: "border-[#d05a73] bg-[#641326]/60 text-white",
+  "бронь скоро": "border-[#b91e4b] bg-[#8b1538]/90 text-white",
+  планирование: "border-[#d95a78] bg-[#8b1538]/60 text-white",
 };
 
 function TimelineEntry({
@@ -32,7 +33,6 @@ function TimelineEntry({
   index: number;
 }) {
   const entryRef = useRef<HTMLDivElement | null>(null);
-  const shouldReduceMotion = useReducedMotion();
   const isLeftColumn = index % 2 === 0;
 
   const { scrollYProgress } = useScroll({
@@ -52,28 +52,29 @@ function TimelineEntry({
     <div
       ref={entryRef}
       className={cn(
-        "relative flex flex-col items-center py-16 lg:flex-row lg:py-28",
-        isLeftColumn ? "lg:flex-row-reverse" : ""
+        "relative grid gap-y-7 py-12 pl-12 sm:py-16 sm:pl-16 lg:grid-cols-[minmax(0,1fr)_5rem_minmax(0,1fr)] lg:items-center lg:gap-y-0 lg:py-20 lg:pl-0"
       )}
     >
       {/* Central Point */}
-      <div className="absolute left-1/2 top-0 z-20 h-6 w-6 -translate-x-1/2 rounded-full border-2 border-[#d05a73] bg-[#080607] shadow-[0_0_20px_rgba(168,25,61,0.45)] lg:top-1/2 lg:-translate-y-1/2">
+      <div className="absolute left-3 top-12 z-20 h-5 w-5 -translate-x-1/2 rounded-full border-2 border-[#d95a78] bg-[#080607] shadow-[0_0_20px_rgba(185,30,75,0.45)] sm:left-4 sm:top-16 lg:left-1/2 lg:top-1/2 lg:h-6 lg:w-6 lg:-translate-y-1/2">
         <motion.div
           style={{ scale: scrollYProgress }}
-          className="absolute inset-1 rounded-full bg-[#a8193d]"
+          className="absolute inset-1 rounded-full bg-[#b91e4b] motion-reduce:!transform-none"
         />
       </div>
 
       {/* Content Card */}
       <div
         className={cn(
-          "w-full px-4 sm:px-8 lg:w-1/2 lg:px-20",
-          isLeftColumn ? "lg:text-right" : "lg:text-left"
+          "min-w-0 lg:row-start-1",
+          isLeftColumn
+            ? "lg:col-start-1 lg:pr-0 lg:text-right"
+            : "lg:col-start-3 lg:pl-0 lg:text-left"
         )}
       >
         <motion.article
-          style={shouldReduceMotion ? undefined : { opacity, scale, x }}
-          className="group relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#13090c] p-5 sm:p-8"
+          style={{ opacity, scale, x }}
+          className="group relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#13090c] p-5 motion-reduce:!transform-none motion-reduce:!opacity-100 sm:p-8"
         >
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] sm:aspect-[16/10]">
             <Image
@@ -98,11 +99,11 @@ function TimelineEntry({
 
           <div className="mt-8">
             <div className={cn(
-              "flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-[#d05a73]",
+              "flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-[#d95a78]",
               isLeftColumn ? "lg:flex-row-reverse" : ""
             )}>
               <span>{item.period}</span>
-              <div className="h-px w-8 bg-[#d05a73]/50" />
+              <div className="h-px w-8 bg-[#d95a78]/50" />
             </div>
             <h3 className="mt-4 font-serif text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
               {item.title}
@@ -114,18 +115,52 @@ function TimelineEntry({
         </motion.article>
       </div>
 
-      {/* Spacer for the other side on desktop */}
-      <div className="hidden lg:block lg:w-1/2" />
+      <aside
+        aria-label={`Дополнительная информация: ${item.title}`}
+        className={cn(
+          "min-w-0 border-l border-white/20 pl-5 lg:row-start-1 lg:max-w-md lg:border-l-0 lg:border-t lg:pt-7",
+          isLeftColumn
+            ? "lg:col-start-3 lg:pl-8"
+            : "lg:col-start-1 lg:ml-auto lg:pr-8 lg:text-right"
+        )}
+      >
+        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#d95a78]">
+          В фокусе · 0{index + 1}
+        </p>
+        <h4 className="mt-4 font-serif text-3xl leading-[1.05] text-white sm:text-4xl">
+          {item.details.title}
+        </h4>
+        <p className="mt-5 text-base leading-7 text-white/65">
+          {item.details.description}
+        </p>
+        <ul className="mt-6 space-y-3">
+          {item.details.highlights.map((highlight) => (
+            <li
+              key={highlight}
+              className={cn(
+                "flex items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-white/75",
+                !isLeftColumn && "lg:flex-row-reverse"
+              )}
+            >
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#b91e4b]"
+              />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      </aside>
     </div>
   );
 }
 
 export function CampCurvedTimeline({ items }: CampTimelineProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.8", "end 0.2"],
+    offset: ["start 0.9", "end 0.2"],
   });
 
   const pathLength = useSpring(scrollYProgress, {
@@ -134,74 +169,21 @@ export function CampCurvedTimeline({ items }: CampTimelineProps) {
   });
 
   return (
-    <section id="timeline" className="relative overflow-hidden border-y border-white/10 bg-[#080607] py-28 lg:py-40">
+    <section
+      id="timeline"
+      className="relative -mt-px overflow-hidden border-b border-white/10 bg-[#080607] pb-28 lg:pb-40"
+    >
+      <CampTimelineFlow />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="mb-24 text-center lg:mb-40">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs font-bold uppercase tracking-[0.16em] text-[#d05a73]"
-          >
-            History / Roadmap
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="mt-8 font-serif text-6xl leading-[0.85] text-foreground sm:text-8xl lg:text-[9rem]"
-          >
-            История <br /> <span className="text-white/20">в движении.</span>
-          </motion.h2>
-          <motion.p
-             initial={{ opacity: 0 }}
-             whileInView={{ opacity: 1 }}
-             viewport={{ once: true }}
-             transition={{ delay: 0.3 }}
-             className="mx-auto mt-10 max-w-2xl text-lg text-muted"
-          >
-            От первого набора до следующей большой смены — здесь собраны прошедшие этапы и ближайшие планы лагеря.
-          </motion.p>
-        </div>
-
         <div ref={containerRef} className="relative">
-          {/* Curved Line SVG - Desktop */}
-          <div className="absolute left-1/2 top-0 hidden h-full w-40 -translate-x-1/2 lg:block">
-            <svg
-              viewBox="0 0 160 1000"
-              preserveAspectRatio="none"
-              className="h-full w-full opacity-30"
-              fill="none"
-            >
-              <path
-                d="M80 0 C 120 150, 40 300, 80 450 C 120 600, 40 750, 80 900 L 80 1000"
-                stroke="white"
-                strokeWidth="1"
-                strokeDasharray="4 4"
-              />
-              <motion.path
-                d="M80 0 C 120 150, 40 300, 80 450 C 120 600, 40 750, 80 900 L 80 1000"
-                stroke="url(#line-gradient-curved)"
-                strokeWidth="3"
-                style={{ pathLength }}
-              />
-              <defs>
-                <linearGradient id="line-gradient-curved" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#641326" />
-                  <stop offset="50%" stopColor="#a8193d" />
-                  <stop offset="100%" stopColor="#ffffff" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
-          {/* Straight Line - Mobile */}
-          <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/10 lg:hidden">
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 left-3 top-0 w-px -translate-x-1/2 bg-white/10 sm:left-4 lg:left-1/2"
+          >
             <motion.div
               style={{ scaleY: pathLength, transformOrigin: "top" }}
-              className="h-full w-full bg-[linear-gradient(180deg,#641326,#a8193d,#ffffff)] shadow-[0_0_15px_rgba(168,25,61,0.45)]"
+              className="h-full w-full bg-[linear-gradient(180deg,#8b1538,#b91e4b,#ffffff)] shadow-[0_0_15px_rgba(185,30,75,0.45)] motion-reduce:!transform-none"
             />
           </div>
 

@@ -9,7 +9,7 @@ import { SiteShell } from "@/components/shared/site-shell";
 
 export function CampHero() {
   return (
-    <section className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-40">
+    <section className="relative overflow-hidden bg-accent pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-40">
       <div className="pointer-events-none absolute inset-0 editorial-grid opacity-25" />
       <DanceMotionField variant="compact" className="hidden lg:block" />
 
@@ -72,7 +72,7 @@ export function CampHero() {
                 </div>
               </div>
 
-              <div className="mt-3 rounded-3xl border border-white/15 bg-accent p-4 sm:p-5 xl:absolute xl:bottom-7 xl:right-7 xl:mt-0 xl:max-w-[18rem]">
+              <div className="mt-3 rounded-3xl border border-white/15 bg-[#13090c]/95 p-4 sm:p-5 xl:absolute xl:bottom-7 xl:right-7 xl:mt-0 xl:max-w-[18rem]">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-white/60">
                   Ритм смены
                 </p>

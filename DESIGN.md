@@ -6,7 +6,7 @@
 
 **Primary goal:** help a visitor feel the studio's character, choose a direction and level, understand the schedule, and contact the studio.
 
-**Visual thesis:** **After rehearsal / stage lights.** The interface feels like a dance studio after the lights go down: near-black stage space, deep burgundy velvet, luminous white type, soft silhouettes, and real red-lit photography.
+**Visual thesis:** **After rehearsal / stage lights.** The interface feels like a dance studio after the lights go down: near-black stage space, ripe-cherry velvet, luminous white type, soft silhouettes, and real red-lit photography.
 
 **Signature idea:** oversized editorial headlines meet fluid, asymmetrically rounded portrait frames inspired by the arc of a dancer's movement. The composition should feel choreographed, not decorated.
 
@@ -16,8 +16,8 @@
 | --- | --- | --- |
 | Stage black | `#080607` | main background |
 | Velvet black | `#13090C` | alternate sections and panels |
-| Burgundy | `#641326` | brand fields, primary controls |
-| Crimson | `#A8193D` | active states and restrained highlights |
+| Ripe cherry | `#8B1538` | brand fields, primary controls |
+| Bright cherry | `#B91E4B` | active states and restrained highlights |
 | Bone | `#F4F0EE` | primary text and light surfaces |
 | White | `#FFFFFF` | highest-emphasis text |
 | Smoke | `#B9AFB2` | secondary copy |
@@ -40,7 +40,7 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 - Shape language is soft and controlled: `16px` for compact elements, `24px` for cards, `32px` for major panels, and asymmetric `32–72px` corners for hero photography.
 - Use full pills for primary controls, filters, and compact statuses. Do not make long content sections into capsules.
 - Prefer hairline borders, solid surfaces, and image crops over glass cards and floating blobs.
-- Alternate black, velvet, burgundy, and occasional bone sections to create stage-like rhythm.
+- Alternate black, velvet, ripe-cherry, and occasional bone sections to create stage-like rhythm.
 - Use real studio photography. Do not add stock images, fake partner logos, or decorative avatars.
 - Home-page narrative order: hero hook → directions → method → weekly rhythm → studio space → team → extended formats → location → final enrollment CTA.
 - On large screens, directions may become one pinned horizontal chapter. The semantic DOM order remains vertical and complete; mobile and reduced-motion layouts use a regular grid.
@@ -51,12 +51,12 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 
 - Fixed floating capsule on desktop and a compact softly rounded bar on mobile; use a near-black solid surface and a fine border.
 - Wordmark remains readable at 375px.
-- Active navigation uses white text and a restrained burgundy marker.
+- Active navigation uses white text and a restrained cherry marker.
 
 ### Buttons
 
 - Minimum target 44×44px.
-- Primary: burgundy fill, white text, full pill shape.
+- Primary: ripe-cherry fill, white text, full pill shape.
 - Secondary: transparent or bone fill with strong contrast.
 - Clear `focus-visible` outline on every interactive element.
 
@@ -108,6 +108,6 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 
 ## 9. Do / don't
 
-**Do:** use expressive crops, black space, burgundy fields, white editorial type, fluid corners, real schedule and coach data, restrained motion.
+**Do:** use expressive crops, black space, ripe-cherry fields, white editorial type, fluid corners, real schedule and coach data, restrained motion.
 
 **Don't:** use generic SaaS glassmorphism, bento dashboards, decorative emojis, warm gold, teal glows, identical radii on every element, bubble-like toy styling, fake testimonials, or self-referential copy.

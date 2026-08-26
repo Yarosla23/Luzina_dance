@@ -25,7 +25,7 @@ export function HomeHero() {
         <div className="grid min-h-[calc(100svh-9rem)] items-center gap-10 lg:grid-cols-[0.98fr_1.02fr] lg:gap-16">
           <Reveal className="max-w-3xl">
             <p data-hero-reveal className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--accent-warm)] before:h-px before:w-10 before:bg-accent-strong">
-              Севастополь · Степаненко, 8
+              Севастополь · Генерала Острякова, 38
             </p>
             <h1 data-hero-reveal className="mt-6 max-w-[11ch] font-serif text-6xl leading-[0.84] text-white sm:text-8xl lg:text-[7.3rem]">
               Движение, в котором слышно тебя.
