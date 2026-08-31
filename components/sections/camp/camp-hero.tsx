@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { campInfo } from "@/lib/site-data";
+import { campInfo, socialLinks } from "@/lib/site-data";
 
 import { ButtonLink } from "@/components/shared/button-link";
 import { DanceMotionField } from "@/components/shared/dance-motion";
@@ -10,14 +10,14 @@ import { SiteShell } from "@/components/shared/site-shell";
 export function CampHero() {
   return (
     <section className="relative overflow-hidden bg-accent pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-40">
-      <div className="pointer-events-none absolute inset-0 editorial-grid opacity-25" />
+      <div className="pointer-events-none absolute inset-0 leopard-pattern opacity-25" />
       <DanceMotionField variant="compact" className="hidden lg:block" />
 
       <SiteShell>
         <div className="relative grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <Reveal className="max-w-3xl">
             <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--accent-warm)] before:h-px before:w-10 before:bg-accent-strong">
-              Dance Soul Camp · 2025–2026
+              Dance Soul Camp · летняя смена
             </p>
             <h1 className="mt-5 font-serif text-5xl leading-[0.86] text-white sm:text-7xl lg:text-[6.3rem]">
               {campInfo.heroTitle}
@@ -28,11 +28,13 @@ export function CampHero() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <ButtonLink href="/camp#program">Смотреть программу</ButtonLink>
-              <ButtonLink href="/#contacts" variant="secondary">
-                Забронировать
-              </ButtonLink>
-              <ButtonLink href="/camp#gallery" variant="secondary">
-                Галерея
+              <ButtonLink
+                href={socialLinks[0].href}
+                target="_blank"
+                rel="noreferrer"
+                variant="secondary"
+              >
+                Узнать о следующей смене
               </ButtonLink>
             </div>
 
@@ -62,25 +64,26 @@ export function CampHero() {
                   alt="Атмосфера танцевального лагеря Dance Soul Camp"
                   fill
                   priority
+                  placeholder="blur"
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.08),rgba(10,10,10,0.45))]" />
 
                 <div className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/80 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md sm:px-6">
-                  Classes / Team / Movement
+                  Классы · команда · движение
                 </div>
               </div>
 
               <div className="mt-3 rounded-3xl border border-white/15 bg-[#13090c]/95 p-4 sm:p-5 xl:absolute xl:bottom-7 xl:right-7 xl:mt-0 xl:max-w-[18rem]">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-white/60">
-                  Ритм смены
+                  Как проходит день
                 </p>
                 <p className="mt-3 font-serif text-3xl leading-none text-white">
-                  Общий темп.
+                  Занятия, съёмки и отдых.
                 </p>
                 <p className="mt-2 text-sm leading-6 text-white/80">
-                  Дневные классы, съемки, общение и время восстановиться между занятиями.
+                  Классы и практика чередуются с общением и временем на восстановление.
                 </p>
               </div>
             </div>

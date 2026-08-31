@@ -22,14 +22,14 @@ export function DirectionsSection() {
           <div data-scroll-reveal className="grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
             <Reveal>
               <SectionHeading
-                eyebrow="Первый шаг · направления"
-                title="Не выбирай стиль по названию. Выбирай по ощущению."
-                description="Три разных характера движения: грув и база, уверенная пластика или эмоциональная свобода. Посмотри, какой язык тела ближе именно тебе."
+                eyebrow="Направления"
+                title="Какое движение тебе ближе?"
+                description="Грув и база, уверенная пластика или больше свободы и эмоций — сравни направления и выбери то, с которого хочется начать."
               />
             </Reveal>
 
             <div className="home-directions-scroll-hint items-center gap-3 pb-1 text-xs font-bold uppercase text-muted">
-              Скролл ведёт по направлениям
+              Листай, чтобы сравнить
               <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white">
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </span>

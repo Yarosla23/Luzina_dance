@@ -36,7 +36,7 @@ const config: Config = {
       },
       backgroundImage: {
         "hero-glow":
-          "linear-gradient(115deg, rgba(139, 21, 56, 0.24), transparent 42%)",
+          "linear-gradient(115deg, rgba(92, 0, 7, 0.24), transparent 42%)",
       },
     },
   },

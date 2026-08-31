@@ -14,7 +14,7 @@ import { StudioSpaceSection } from "@/components/sections/home/studio-space-sect
 export const metadata: Metadata = {
   title: "Главная",
   description:
-    "Танцевальная Душа: направления, расписание, преподаватели, танцевальный лагерь и мерч студии.",
+    "Танцевальная студия «Танцевальная Душа» в Севастополе для девушек от 16 лет: направления, расписание, преподаватели, лагерь и мерч.",
 };
 
 export default function HomePage() {

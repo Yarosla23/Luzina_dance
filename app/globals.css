@@ -8,15 +8,13 @@
   --surface: #13090c;
   --line: rgba(255, 255, 255, 0.14);
   --muted: #b9afb2;
-  --accent: #8b1538;
-  --accent-strong: #b91e4b;
-  --accent-warm: #d95a78;
+  --accent: #5c0007;
+  --accent-strong: #5c0007;
+  --accent-warm: var(--foreground);
   --accent-cool: #ffffff;
   --ink: #080607;
-  --font-sans:
-    Arial, "Helvetica Neue", ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Bodoni MT", Didot, Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-montserrat), Arial, sans-serif;
+  --font-serif: var(--font-montserrat), Arial, sans-serif;
 }
 
 * {
@@ -32,18 +30,33 @@ footer[id] {
   scroll-margin-top: 7rem;
 }
 
+html:has(.merch-scroll-snap) {
+  scroll-snap-type: y proximity;
+}
+
+.merch-scroll-snap > section {
+  scroll-snap-align: start;
+  scroll-margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.merch-scroll-snap) {
+    scroll-snap-type: none;
+  }
+}
+
 body {
   min-height: 100vh;
   overflow-x: clip;
   background:
-    linear-gradient(120deg, rgba(139, 21, 56, 0.22), transparent 34%),
+    linear-gradient(120deg, rgba(92, 0, 7, 0.22), transparent 34%),
     linear-gradient(180deg, #080607 0%, #0c0809 52%, #080607 100%);
   color: var(--foreground);
   font-feature-settings: "kern" 1, "liga" 1;
 }
 
 ::selection {
-  background: #b91e4b;
+  background: #5c0007;
   color: #ffffff;
 }
 
@@ -91,7 +104,7 @@ a {
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(115deg, #ffffff 0%, #f4f0ee 62%, #d95a78 100%);
+    background: linear-gradient(115deg, #ffffff 0%, #f4f0ee 62%, #5c0007 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -119,16 +132,14 @@ a {
     position: relative;
     overflow: hidden;
     border-radius: 999px;
-    border: 1px solid #b91e4b;
-    background: #8b1538;
-    box-shadow: 0 18px 50px rgba(139, 21, 56, 0.32);
+    border: 1px solid #5c0007;
+    background: #5c0007;
+    box-shadow: 0 18px 50px rgba(92, 0, 7, 0.32);
   }
 
-  .editorial-grid {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-    background-size: min(9vw, 120px) 72px;
+  .leopard-pattern {
+    background-image: url("/leopard-pattern.webp");
+    background-size: clamp(42rem, 52vw, 48rem) auto;
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 86%);
   }
 
@@ -145,7 +156,7 @@ a {
     z-index: -1;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 36%),
-      linear-gradient(115deg, rgba(139, 21, 56, 0.1), transparent 42%);
+      linear-gradient(115deg, rgba(92, 0, 7, 0.1), transparent 42%);
     pointer-events: none;
   }
 
@@ -170,7 +181,7 @@ a {
       var(--accent-strong) 76%,
       transparent
     );
-    box-shadow: 0 0 24px rgba(185, 30, 75, 0.48);
+    box-shadow: 0 0 24px rgba(92, 0, 7, 0.48);
     opacity: 0;
     pointer-events: none;
     transform: translate3d(0, -50%, 0) scaleY(0.24);
@@ -221,7 +232,7 @@ a {
     top: 0;
     width: 3.5rem;
     height: 0.2rem;
-    background: #b91e4b;
+    background: #5c0007;
   }
 
   .home-directions-track {

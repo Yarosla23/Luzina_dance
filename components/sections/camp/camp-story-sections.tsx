@@ -10,13 +10,13 @@ import { SiteShell } from "@/components/shared/site-shell";
 export function CampStorySections() {
   return (
     <section id="program" className="relative overflow-hidden border-b border-white/10 bg-black py-24 lg:py-36">
-      <div className="pointer-events-none absolute inset-0 editorial-grid opacity-15" />
+      <div className="pointer-events-none absolute inset-0 leopard-pattern opacity-15" />
       <SiteShell className="relative">
         <Reveal>
           <SectionHeading
             eyebrow="Программа смены"
             title="От первого знакомства до общего финала."
-            description="Каждый этап решает свою задачу: войти в ритм, укрепить технику, попробовать себя в кадре и завершить смену одной командой."
+            description="Знакомство, занятия, съёмки и общий финал — без перегруженного расписания."
           />
         </Reveal>
 
@@ -39,6 +39,7 @@ export function CampStorySections() {
                     src={scene.image}
                     alt={scene.title}
                     fill
+                    placeholder="blur"
                     className="object-cover transition duration-700 ease-[cubic-bezier(.22,1,.36,1)] hover:scale-[1.02]"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -56,7 +57,7 @@ export function CampStorySections() {
                   )}
                 >
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#d95a78]">
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/70">
                       {scene.kicker}
                     </p>
                     <h2 className="mt-6 font-serif text-4xl leading-[0.9] text-white sm:text-6xl">

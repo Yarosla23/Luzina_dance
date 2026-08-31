@@ -22,9 +22,9 @@ export function AboutSection() {
           <Reveal className="stage-rule pt-7">
             <div data-scroll-reveal>
               <SectionHeading
-                eyebrow="Как всё устроено"
-                title="Свобода в танце начинается с понятной опоры."
-                description="Подходящий уровень, внимательный педагог и регулярный ритм занятий дают базу, на которой появляется собственная подача."
+                eyebrow="Как проходят занятия"
+                title="Сначала — понятная база. Потом — больше свободы."
+                description="Педагог помогает разобраться в движении, услышать музыку и двигаться в своём темпе — без сравнения с другими."
               />
             </div>
 
@@ -54,7 +54,7 @@ export function AboutSection() {
               <ImagePanel
                 image={founder.image}
                 title={founder.name}
-                description="Руководитель студии. Собирает команду, направление и атмосферу пространства."
+                description="Руководит студией и ведёт женственный хип-хоп и леди-хорео."
                 className="min-h-[360px] sm:min-h-[560px]"
               />
             </div>

@@ -22,11 +22,11 @@ export function MediaPlaceholder({
         className,
       )}
     >
-      <div className="pointer-events-none absolute inset-0 editorial-grid opacity-20" />
+      <div className="pointer-events-none absolute inset-0 leopard-pattern opacity-20" />
       <div className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-accent/25 blur-3xl" />
       <div className="pointer-events-none absolute left-6 top-6 flex items-center gap-3 text-[10px] font-bold uppercase text-white/45">
         <span className="h-2 w-2 rounded-full border border-white/50" />
-        Место для вашего фото
+        Место для фото
       </div>
 
       <div className="relative mt-auto flex w-full items-end justify-between gap-5 border-t border-white/14 pt-5">

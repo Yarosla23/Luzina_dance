@@ -43,14 +43,14 @@ export function CampTimelineFlow() {
         style={flowStyle}
         viewBox="0 0 1440 900"
         preserveAspectRatio="none"
-        className="absolute inset-0 hidden h-full w-full drop-shadow-[0_22px_28px_rgba(185,30,75,0.2)] motion-reduce:hidden lg:block"
+        className="absolute inset-0 hidden h-full w-full drop-shadow-[0_22px_28px_rgba(92,0,7,0.2)] motion-reduce:hidden lg:block"
       >
         <defs>
           <linearGradient id="campFlowDesktop" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#8b1538" />
-            <stop offset="50%" stopColor="#97183f" />
-            <stop offset="82%" stopColor="#aa1b46" />
-            <stop offset="100%" stopColor="#b91e4b" />
+            <stop offset="0%" stopColor="#5c0007" />
+            <stop offset="50%" stopColor="#5c0007" />
+            <stop offset="82%" stopColor="#5c0007" />
+            <stop offset="100%" stopColor="#5c0007" />
           </linearGradient>
           <linearGradient id="campFlowDesktopEdge" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -75,14 +75,14 @@ export function CampTimelineFlow() {
         style={flowStyle}
         viewBox="0 0 375 672"
         preserveAspectRatio="none"
-        className="absolute inset-0 h-full w-full drop-shadow-[0_18px_24px_rgba(185,30,75,0.2)] motion-reduce:hidden lg:hidden"
+        className="absolute inset-0 h-full w-full drop-shadow-[0_18px_24px_rgba(92,0,7,0.2)] motion-reduce:hidden lg:hidden"
       >
         <defs>
           <linearGradient id="campFlowMobile" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#8b1538" />
-            <stop offset="48%" stopColor="#97183f" />
-            <stop offset="82%" stopColor="#aa1b46" />
-            <stop offset="100%" stopColor="#b91e4b" />
+            <stop offset="0%" stopColor="#5c0007" />
+            <stop offset="48%" stopColor="#5c0007" />
+            <stop offset="82%" stopColor="#5c0007" />
+            <stop offset="100%" stopColor="#5c0007" />
           </linearGradient>
           <linearGradient id="campFlowMobileEdge" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -104,7 +104,7 @@ export function CampTimelineFlow() {
 
       <div
         aria-hidden="true"
-        className="editorial-grid pointer-events-none absolute inset-0 z-10 opacity-20"
+        className="leopard-pattern pointer-events-none absolute inset-0 z-10 opacity-20"
       />
 
       <div className="relative z-20 mx-auto flex h-full max-w-7xl items-start justify-center px-6 pt-28 text-center sm:pt-32 lg:pt-40">
@@ -116,7 +116,7 @@ export function CampTimelineFlow() {
             transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
             className="text-xs font-bold uppercase tracking-[0.16em] text-white/70 motion-reduce:!translate-y-0 motion-reduce:!opacity-100"
           >
-            History / Roadmap
+            История лагеря
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 28 }}
@@ -129,7 +129,7 @@ export function CampTimelineFlow() {
             }}
             className="mt-8 font-serif text-6xl leading-[0.85] text-white motion-reduce:!translate-y-0 motion-reduce:!opacity-100 sm:text-8xl lg:text-[9rem]"
           >
-            История <br /> <span className="text-white/45">в движении.</span>
+            Прошедшие смены <br /> <span className="text-white/45">и ближайшие планы.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -142,8 +142,8 @@ export function CampTimelineFlow() {
             }}
             className="mx-auto mt-10 max-w-2xl text-base leading-7 text-white/75 motion-reduce:!translate-y-0 motion-reduce:!opacity-100 sm:text-lg"
           >
-            От первого набора до следующей большой смены — здесь собраны
-            прошедшие этапы и ближайшие планы лагеря.
+            Здесь собраны этапы лагеря: от первого анонса до следующей летней
+            смены.
           </motion.p>
         </div>
       </div>

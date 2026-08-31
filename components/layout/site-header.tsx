@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { mainNavigation } from "@/lib/site-data";
+import { mainNavigation, socialLinks } from "@/lib/site-data";
 
 import { ButtonLink } from "@/components/shared/button-link";
 import { Logo } from "@/components/shared/logo";
@@ -63,8 +63,13 @@ export function SiteHeader() {
             </nav>
 
             <div className="hidden lg:block">
-              <ButtonLink href="/#contacts" className="px-4 py-2.5 text-[10px]">
-                Связаться
+              <ButtonLink
+                href={socialLinks[0].href}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2.5 text-[10px]"
+              >
+                Подобрать группу
               </ButtonLink>
             </div>
 
@@ -96,7 +101,7 @@ export function SiteHeader() {
               <p className="text-[11px] font-bold uppercase text-[color:var(--accent-warm)]">
                 Навигация
               </p>
-              <p className="mt-1 text-sm text-muted">Выберите раздел</p>
+              <p className="mt-1 text-sm text-muted">Выбери раздел</p>
             </div>
 
             <nav aria-label="Основная навигация" className="flex flex-col">
@@ -131,7 +136,7 @@ export function SiteHeader() {
                     {isCurrentPage ? (
                       <span
                         aria-hidden="true"
-                        className="h-2 w-2 rounded-full bg-accent-strong shadow-[0_0_12px_rgba(185,30,75,0.75)]"
+                        className="h-2 w-2 rounded-full bg-accent-strong shadow-[0_0_12px_rgba(92,0,7,0.75)]"
                       />
                     ) : null}
                   </Link>
@@ -141,11 +146,13 @@ export function SiteHeader() {
 
             <div className="mt-6">
               <ButtonLink
-                href="/#contacts"
+                href={socialLinks[0].href}
+                target="_blank"
+                rel="noreferrer"
                 className="w-full justify-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Записаться на пробное
+                Подобрать группу
               </ButtonLink>
             </div>
           </div>

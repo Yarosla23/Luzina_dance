@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
 import { SiteFrame } from "@/components/layout/site-frame";
@@ -6,6 +7,23 @@ import { siteSettings } from "@/lib/site-data";
 
 import "lenis/dist/lenis.css";
 import "./globals.css";
+
+const montserrat = localFont({
+  src: [
+    {
+      path: "./fonts/Montserrat-Variable.ttf",
+      style: "normal",
+      weight: "100 900",
+    },
+    {
+      path: "./fonts/Montserrat-Italic-Variable.ttf",
+      style: "italic",
+      weight: "100 900",
+    },
+  ],
+  display: "swap",
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://luzina-studio.vercel.app"),
@@ -35,10 +53,8 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="ru" suppressHydrationWarning>
-      <body
-        className="bg-background font-sans text-foreground antialiased"
-      >
+    <html lang="ru" className={montserrat.variable} suppressHydrationWarning>
+      <body className="bg-background font-sans text-foreground antialiased">
         <SiteFrame>{children}</SiteFrame>
       </body>
     </html>

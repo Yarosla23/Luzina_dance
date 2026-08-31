@@ -18,7 +18,7 @@ export function LocationSection() {
           <SectionHeading
             eyebrow="Локация"
             title="Встретимся в студии."
-            description="Мы находимся на проспекте Генерала Острякова, 38. Откройте маршрут в Яндекс Картах или напишите нам перед первым занятием."
+            description="Мы находимся на проспекте Генерала Острякова, 38. Открой маршрут в Яндекс Картах или напиши нам перед первым занятием."
           />
         </Reveal>
 
@@ -35,8 +35,8 @@ export function LocationSection() {
                 {studioAddress}
               </h3>
               <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
-                Перед первым визитом уточните время своей группы — мы подскажем,
-                как найти вход и что взять с собой.
+                Перед первым занятием напиши нам: подтвердим время группы,
+                подскажем, как найти вход и что взять с собой.
               </p>
 
               <div className="mt-8">
@@ -45,18 +45,13 @@ export function LocationSection() {
                 </ButtonLink>
               </div>
 
-              <div className="mt-8 border-t border-white/14 pt-5">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/25 text-foreground">
-                    <Navigation className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="text-sm text-foreground">Студия уже отмечена на карте</p>
-                    <p className="mt-1 text-xs uppercase text-muted">
-                      Танцевальная Душа · Генерала Острякова 38
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-8 flex items-center gap-3 border-t border-white/14 pt-5">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/25 text-foreground">
+                  <Navigation className="h-4 w-4" />
+                </span>
+                <p className="text-sm text-foreground">
+                  Танцевальная Душа · Генерала Острякова, 38
+                </p>
               </div>
             </div>
           </Reveal>

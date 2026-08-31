@@ -48,13 +48,14 @@ function GalleryScene({
           src={item.image}
           alt={item.title}
           fill
+          placeholder="blur"
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 58vw"
         />
       </motion.div>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.02),rgba(10,10,10,0.72))]" />
       <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/30 px-4 py-2 text-xs font-semibold uppercase text-white/80 backdrop-blur-xl sm:left-6 sm:top-6">
-        Scene 0{index + 1}
+        Кадр 0{index + 1}
       </div>
       <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
         <p className="font-serif text-4xl leading-none text-white sm:text-5xl">
@@ -83,9 +84,9 @@ export function CampMotionGallery() {
       <SiteShell>
         <Reveal>
           <SectionHeading
-            eyebrow="Галерея"
-            title="Галерея как scroll-клип: каждый кадр раскрывается в своем темпе."
-            description="Вместо обычной сетки фото блок работает как серия сцен: крупный sticky-заголовок, кинематографичные карточки и mood-лента, которая мягко движется на скролле."
+            eyebrow="Фотографии"
+            title="Пять моментов одной смены."
+            description="От утренней подготовки до вечерней практики — фотографии показывают, как меняется ритм лагерного дня."
           />
         </Reveal>
 
@@ -94,17 +95,17 @@ export function CampMotionGallery() {
             <Reveal>
               <div className="liquid-glass rounded-2xl p-6 sm:p-8">
                 <p className="text-xs font-semibold uppercase text-[#f4c88b]">
-                  Motion gallery
+                  Как проходит смена
                 </p>
                 <h3 className="mt-4 font-serif text-4xl leading-[0.96] text-foreground sm:text-5xl">
-                  Фото двигаются как хореография: вход, акцент, пауза.
+                  Подготовка, классы, съёмки и время с командой.
                 </h3>
                 <p className="mt-5 text-sm leading-7 text-muted sm:text-base">
-                  Такой блок ближе к MotionSites-подаче: не перегружает страницу,
-                  но превращает галерею в отдельный момент сайта.
+                  В галерее собраны разные части дня — от первого разогрева до
+                  свободного движения вечером.
                 </p>
                 <div className="mt-8 grid grid-cols-3 gap-2">
-                  {["Flow", "Beat", "Frame"].map((item) => (
+                  {["Разминка", "Классы", "Съёмки"].map((item) => (
                     <div
                       key={item}
                       className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-4 text-center text-xs font-semibold uppercase text-foreground"
@@ -129,15 +130,14 @@ export function CampMotionGallery() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div className="max-w-2xl">
                 <p className="text-xs font-semibold uppercase text-[#f4c88b]">
-                  Mood strip
+                  Ещё фотографии
                 </p>
                 <h3 className="mt-4 font-serif text-4xl leading-[0.96] text-foreground">
-                  Горизонтальная лента двигается мягко, как закулисный монтаж.
+                  От утреннего класса до вечернего джема.
                 </h3>
               </div>
               <p className="max-w-md text-sm leading-7 text-muted">
-                На десктопе лента получает scroll-parallax, на мобильных
-                остается удобной горизонтальной галереей.
+                Листай, чтобы посмотреть, как проходит день в лагере.
               </p>
             </div>
           </Reveal>
@@ -157,6 +157,7 @@ export function CampMotionGallery() {
                       src={item.image}
                       alt={item.title}
                       fill
+                      placeholder="blur"
                       className="object-cover transition duration-700 group-hover:scale-[1.04]"
                       sizes="(max-width: 640px) 85vw, 340px"
                     />

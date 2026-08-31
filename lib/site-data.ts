@@ -7,6 +7,14 @@ import evaImageSecondary from "@/media/eva2.jpg";
 import logoImage from "@/media/logo.jpg";
 import merchPantsDetailDarkImage from "@/media/merch/red.jpg";
 import merchPantsDetailLightImage from "@/media/merch/white.jpg";
+import merchStreetBagCloseImage from "@/media/merch/photo_2025-09-28_00-20-58.jpg";
+import merchStreetStudioImage from "@/media/merch/photo_2025-09-29_23-05-49.jpg";
+import merchStreetCarWideImage from "@/media/merch/photo_2025-09-30_18-24-47.jpg";
+import merchStreetCarBackImage from "@/media/merch/photo_2025-09-30_18-24-48.jpg";
+import merchStreetGiftImage from "@/media/merch/photo_2025-10-02_22-16-49.jpg";
+import merchStreetBasketballImage from "@/media/merch/photo_2025-10-02_23-35-59.jpg";
+import merchStreetWallProfileImage from "@/media/merch/photo_2025-11-10_15-15-14.jpg";
+import merchStreetWallBackImage from "@/media/merch/photo_2025-11-10_15-15-19.jpg";
 import merchPantsImagePrimary from "@/media/merch/photo_2026-04-09_00-46-35.jpg";
 import merchPantsImageSecondary from "@/media/merch/photo_2026-04-09_00-46-31.jpg";
 import merchPantsImageGroup from "@/media/merch/photo_2026-04-09_00-46-38.jpg";
@@ -25,8 +33,8 @@ export const siteSettings = {
   name: "Танцевальная Душа",
   tagline: "Студия танцев",
   description:
-    "Современная танцевальная студия: направления, расписание, команда, танцевальный лагерь и мерч.",
-  signUpNote: "Старт занятий с 27 апреля, запись осуществляется в лс",
+    "«Танцевальная Душа» — танцевальная студия в Севастополе для девушек от 16 лет. Направления, расписание, преподаватели, танцевальный лагерь и мерч.",
+  signUpNote: "Подберём группу для первого занятия.",
   logo: logoImage,
 } as const;
 
@@ -47,38 +55,38 @@ export const footerCredit = {
 } as const;
 
 export const contactLines = [
-  "Запись осуществляется в лс",
-  "Севастополь · Проспект Генерала Острякова, 38",
+  "Запись — в Telegram или VK",
+  "Севастополь · проспект Генерала Острякова, 38",
   "Танцевальная Душа",
 ] as const;
 
 export const studioHighlights = [
-  "группы по направлениям и уровню",
-  "мягкая, но собранная подача",
-  "комьюнити, движение и стиль",
+  "группы 16+, 18+ и Про",
+  "занятия с преподавателем",
+  "съёмки и танцевальный лагерь",
 ] as const;
 
 export const homepageStats = [
   { value: "3", label: "основных направления" },
-  { value: "6", label: "дней занятий в неделю" },
-  { value: "3", label: "педагога в команде" },
+  { value: "3", label: "преподавателя в команде" },
+  { value: "16+", label: "возраст участников" },
 ] as const;
 
 export const studioCapabilities = [
   {
-    title: "Группы под уровень",
+    title: "Подходящая группа",
     description:
-      "Расписание разделено по направлениям и темпу, чтобы каждый мог выбрать подходящую нагрузку без лишнего давления.",
+      "Расскажи о своём опыте и удобном времени — подскажем, с какой группы начать.",
   },
   {
-    title: "Педагоги с характером",
+    title: "Свой фокус у каждого педагога",
     description:
-      "У каждого направления свой преподаватель, визуальный стиль и понятная траектория роста внутри студии.",
+      "Дима работает с базой и грувом, Ева — с пластикой и телом, Яна — с женственным хип-хопом и леди-хорео.",
   },
   {
-    title: "Съемки и комьюнити",
+    title: "Съёмки и жизнь студии",
     description:
-      "Помимо классов есть практика, контент, лагерные форматы и среда, где движение становится частью жизни.",
+      "Кроме регулярных занятий, студия проводит съёмки и танцевальный лагерь.",
   },
 ] as const;
 
@@ -88,21 +96,21 @@ export const danceDirections = [
     slug: "hip-hop-mix",
     title: "Хип-хоп микс",
     description:
-      "Энергичное направление, сочетающее базу, грув, подачу и современные элементы уличной хореографии.",
+      "Разбираем базу и грув, учимся слышать бит и собирать движения в уверенную подачу.",
     image: dimaImagePrimary,
   },
   {
     slug: "hip-hop-girlie",
     title: "Хип-хоп герли",
     description:
-      "Женственная, яркая и уверенная подача, пластика, акценты, характер и стиль.",
+      "Работаем с пластикой, акцентами и уверенной подачей в хип-хоп-хореографии.",
     image: yanaImagePrimary,
   },
   {
     slug: "contemporary",
     title: "Контемп",
     description:
-      "Техника, пластика, эмоции, работа с телом, музыкальностью и выразительностью.",
+      "Учимся лучше чувствовать тело, работать с пластикой и передавать эмоцию через движение.",
     image: evaImagePrimary,
   },
 ] as const;
@@ -114,10 +122,10 @@ export const coaches = [
     name: "Дима Белов",
     role: "Хип-хоп микс",
     shortBio:
-      "Педагог по направлению хип хоп микс. Дает сильную базу, грув и современную подачу.",
+      "На занятиях Димы — база, грув и работа с музыкальностью в хип-хоп-миксе.",
     longBio:
-      "Дима помогает ученикам почувствовать ритм, уверенность и свободу движения. На занятиях много внимания уделяется базе, музыкальности и собранной подаче.",
-    experience: "Танцует более 6 лет, преподает около года.",
+      "Дима ведёт хип-хоп-микс: разбирает базу, грув и музыкальность, а затем помогает собрать движения в уверенную подачу.",
+    experience: "Танцует более 6 лет, преподаёт около года.",
     image: dimaImagePrimary,
     gallery: [dimaImagePrimary, dimaImageSecondary],
   },
@@ -126,22 +134,22 @@ export const coaches = [
     name: "Ева Кабайда",
     role: "Контемп",
     shortBio:
-      "Педагог по направлению контемп. Работает с техникой, пластикой и выразительностью.",
+      "На занятиях Евы — техника контемпа, пластика и внимание к тому, как тело чувствует движение.",
     longBio:
-      "Ева ведет занятия через качество движения, телесную осознанность и музыкальность. В фокусе техника, работа с корпусом и эмоциональная выразительность.",
-    experience: "Танцует около 5 лет, преподает около полугода.",
+      "Ева ведёт контемп и помогает лучше чувствовать тело в движении. На занятиях — техника, работа с корпусом, пластика и музыкальность.",
+    experience: "Танцует около 5 лет, преподаёт около полугода.",
     image: evaImagePrimary,
     gallery: [evaImagePrimary, evaImageSecondary],
   },
   {
     slug: "yana-luzina",
     name: "Яна Лузина",
-    role: "Руководитель студии",
+    role: "Руководитель и преподаватель",
     shortBio:
-      "Руководитель и мама нашей танцевальной студии. Формирует атмосферу, стиль и визуальный характер проекта.",
+      "Руководит студией, ведёт женственный хип-хоп и леди-хорео, собирает команду и программу.",
     longBio:
-      "Яна отвечает за развитие студии, визуальную культуру и общую атмосферу пространства. Это человек, который задает тон проекту и собирает вокруг него комьюнити.",
-    experience: "Танцует более 10 лет, преподает около 3 лет.",
+      "Яна руководит студией и ведёт женственный хип-хоп и леди-хорео. На занятиях работает с пластикой, акцентами и уверенной подачей.",
+    experience: "Танцует более 10 лет, преподаёт около 3 лет.",
     image: yanaImagePrimary,
     gallery: [yanaImagePrimary, yanaImageSecondary],
   },
@@ -184,7 +192,7 @@ export const homeSchedule = [
     sessions: [
       {
         time: "10:00–11:00",
-        direction: "Стрейтчинг",
+        direction: "Стретчинг",
         teacher: "Ева",
         level: "16+",
       },
@@ -236,7 +244,7 @@ export const homeSchedule = [
     sessions: [
       {
         time: "10:00–11:00",
-        direction: "Стрейтчинг",
+        direction: "Стретчинг",
         teacher: "Ева",
         level: "16+",
       },
@@ -260,27 +268,27 @@ export const homeSchedule = [
 export const campInfo = {
   title: "Танцевальный лагерь",
   description:
-    "Танцевальный лагерь — это пространство движения, творчества, новых знакомств и ярких впечатлений. Здесь участники смогут погрузиться в атмосферу танца, развития и командной энергии.",
-  heroTitle: "Пять дней, чтобы войти в движение глубже.",
+    "Пять дней занятий, съёмок, отдыха и времени с командой.",
+  heroTitle: "Пять дней танца, съёмок и жизни одной командой.",
   heroDescription:
-    "Dance Soul Camp собирает лето вокруг танца: дневные классы, съемки, музыка, команда и пространство, в котором можно пробовать новое без спешки.",
+    "Днём — классы и практика, вечером — съёмки, музыка и время с командой. Нагрузка чередуется с отдыхом, чтобы сил хватило на всю смену.",
   heroImage: yanaImageSecondary,
   heroStats: [
-    { value: "5 дней", label: "интенсив и атмосфера" },
-    { value: "2025–2026", label: "roadmap смен и сезонов" },
-    { value: "1 команда", label: "общий ритм смены" },
+    { value: "5 дней", label: "занятия и время на отдых" },
+    { value: "Техника", label: "и фристайл в программе" },
+    { value: "Съёмка", label: "общий результат смены" },
   ],
   timeline: [
     {
       id: "2025-open-call",
       period: "Май 2025",
-      title: "Open Call / первый анонс",
+      title: "Первый анонс",
       status: "архив",
-      note: "Запуск summer-листа, сбор первой команды и анонс формата лагеря.",
+      note: "Открыли анкету, рассказали о формате и начали собирать первую команду.",
       details: {
         title: "Знакомство и сбор команды",
         description:
-          "Первый этап помогает познакомиться с форматом, задать вопросы и понять, каким участники хотят видеть общее лето.",
+          "На первом этапе участники знакомятся с форматом, задают вопросы и делятся ожиданиями от смены.",
         highlights: ["Открытая анкета", "Знакомство с форматом", "Сбор пожеланий"],
       },
       image: yanaImagePrimary,
@@ -288,35 +296,35 @@ export const campInfo = {
     {
       id: "2025-city-session",
       period: "Июль 2025",
-      title: "City Session",
+      title: "Городская смена",
       status: "архив",
-      note: "Классы днем, прогулки, jam-вечер и тестовая съемочная программа.",
+      note: "Дневные классы, прогулка, вечерняя свободная практика и тестовая съёмка.",
       details: {
         title: "Город как часть сцены",
         description:
-          "Дневной ритм соединяет занятия, прогулочные маршруты и свободную практику без перегруженного расписания.",
-        highlights: ["Дневные классы", "Городская прогулка", "Вечерний jam"],
+          "Занятия чередовались с прогулкой и свободной практикой без перегруженного расписания.",
+        highlights: ["Дневные классы", "Городская прогулка", "Свободная практика"],
       },
       image: dimaImagePrimary,
     },
     {
       id: "2025-sunset-week",
       period: "Август 2025",
-      title: "Sunset Week",
+      title: "Смена на закате",
       status: "архив",
-      note: "Неделя с упором на хореографию, команду и визуальный контент в golden hour.",
+      note: "Неделя хореографии, командной работы и съёмок в вечернем свете.",
       details: {
         title: "Хореография в вечернем свете",
         description:
           "Этап строится вокруг общей постановки: от первых связок до цельного материала для командной съёмки.",
-        highlights: ["Постановочная работа", "Golden-hour съёмка", "Командный материал"],
+        highlights: ["Постановочная работа", "Съёмка на закате", "Командный материал"],
       },
       image: yanaImageSecondary,
     },
     {
       id: "2026-early-list",
       period: "Февраль 2026",
-      title: "Early List",
+      title: "Предзапись",
       status: "ранний лист",
       note: "Предзапись для тех, кто хочет первыми получить даты, формат и бронь.",
       details: {
@@ -330,41 +338,41 @@ export const campInfo = {
     {
       id: "2026-main-camp",
       period: "Июнь 2026",
-      title: "Main Summer Camp",
+      title: "Главная летняя смена",
       status: "бронь скоро",
-      note: "Основная летняя смена: техника, freestyle, съемки, recovery и комьюнити-программа.",
+      note: "Основная летняя смена: техника, фристайл, съёмки, восстановление и время с командой.",
       details: {
         title: "Главная смена сезона",
         description:
           "Пять дней с понятным чередованием нагрузки и отдыха: учимся, пробуем новое и собираем общий результат.",
-        highlights: ["Техника и freestyle", "Съёмочный день", "Время на recovery"],
+        highlights: ["Техника и фристайл", "Съёмочный день", "Время на восстановление"],
       },
       image: evaImageSecondary,
     },
     {
       id: "2026-festival-finale",
       period: "Август 2026",
-      title: "Festival Finale",
+      title: "Финал сезона",
       status: "планирование",
-      note: "Финальная смена сезона с большими постановками, showcase-днем и вечерним closing jam.",
+      note: "Финальная смена сезона с большими постановками, итоговым показом и вечерним джемом.",
       details: {
         title: "Общий финал",
         description:
           "Заключительный этап соединяет постановки разных групп в один день показов и свободный вечерний танец.",
-        highlights: ["Большие постановки", "Showcase-день", "Closing jam"],
+        highlights: ["Большие постановки", "Итоговый показ", "Вечерний джем"],
       },
       image: dimaImageSecondary,
     },
   ],
   audience: [
-    "для тех, кто любит танец и хочет провести время в сильной творческой среде",
-    "для участников, которым важны движение, общение и командный опыт",
-    "для тех, кто хочет совмещать обучение, отдых и яркие впечатления",
+    "для тех, кто хочет больше времени посвятить танцу",
+    "для тех, кому важны занятия, общение и работа в команде",
+    "для тех, кто хочет совместить обучение и отдых",
   ],
   activities: [
     "танцевальные классы",
     "творческие задания",
-    "съемки и контент",
+    "фото- и видеосъёмки",
     "командные активности",
     "вечерние события",
   ],
@@ -372,17 +380,17 @@ export const campInfo = {
     {
       title: "Программа дня",
       description:
-        "Утренний body prep, дневные классы по направлениям и вечерние сборки, где танец сочетается с отдыхом и общением.",
+        "Утренняя подготовка тела, дневные классы и вечерняя программа, где танец чередуется с отдыхом и общением.",
     },
     {
       title: "Атмосфера лагеря",
       description:
-        "Летний ритм, light sunset mood, музыка, воздух и комьюнити, в котором комфортно расти и раскрываться.",
+        "Летний ритм, музыка, съёмки на закате и команда, с которой комфортно учиться новому.",
     },
     {
-      title: "Съемки и контент",
+      title: "Фото- и видеосъёмки",
       description:
-        "Контент-дни и короткие съемочные сессии помогают закреплять материал и оставляют после смены сильный визуальный след.",
+        "Короткие съёмочные сессии помогают закрепить материал и сохранить общий результат смены.",
     },
     {
       title: "Педагоги и кураторы",
@@ -399,45 +407,45 @@ export const campInfo = {
     {
       title: "Формат участия",
       description:
-        "Подходит тем, кто хочет не просто поездку, а собранную летнюю среду с танцем, командой и визуальной атмосферой.",
+        "Подходит тем, кто хочет совместить занятия, отдых, съёмки и время с командой.",
     },
     {
       title: "Ритм смены",
       description:
-        "Каждый день строится вокруг баланса: тренировка, практика, свободное время, совместные активности и вечерний вайб.",
+        "Каждый день сочетает тренировку, практику, свободное время и совместные активности.",
     },
     {
-      title: "Что можно менять позже",
+      title: "Даты и условия",
       description:
-        "Даты, стоимость, точную локацию и условия участия удобно обновлять точечно, не переписывая структуру страницы.",
+        "Даты, стоимость, точную локацию и условия участия сообщим перед стартом записи.",
     },
   ],
   editorialCards: [
     {
       label: "Program / format",
-      title: "Не просто сбор, а летняя история вокруг танца.",
+      title: "Пять дней занятий, съёмок и времени с командой.",
       description:
-        "Dance Soul Camp задуман как смена, где у танца есть сцена, у команды есть энергия, а у каждого дня есть свой темп: от собранной утренней подготовки до мягкого заката после класса.",
+        "Утром участники готовятся к нагрузке, днём занимаются, а вечером отдыхают, общаются и снимают общий материал.",
       image: evaImageSecondary,
     },
     {
       label: "Sunset / community",
-      title: "Golden hour, съемки, jam и ощущение свободы.",
+      title: "Съёмки на закате и свободная практика.",
       description:
-        "Лагерь собирает атмосферу фестивального лета: яркие классы, теплый свет, сильные кадры, музыка на фоне и команда, которая проживает смену вместе, а не параллельно.",
+        "После классов остаётся время на музыку, общение, свободное движение и командные съёмки.",
       image: dimaImagePrimary,
     },
   ],
   storyScenes: [
     {
       id: "scene-arrival",
-      kicker: "Scene 01 / arrival",
-      title: "Заезд начинается как мягкий вход в общий ритм.",
+      kicker: "Этап 1 · знакомство",
+      title: "Знакомство и общий старт.",
       description:
-        "Первый день не перегружает. Участники знакомятся, настраиваются на темп смены, входят в пространство и постепенно собираются в одну команду.",
+        "В первый день участники знакомятся, узнают программу и постепенно входят в ритм смены.",
       image: evaImageSecondary,
-      tags: ["welcome", "team", "warm-up"],
-      note: "Мягкий старт нужен, чтобы не ломать состояние, а переводить в движение.",
+      tags: ["знакомство", "команда", "разминка"],
+      note: "Спокойный старт помогает познакомиться и подготовиться к занятиям.",
       metrics: [
         { label: "tempo", value: "slow rise" },
         { label: "focus", value: "team sync" },
@@ -445,13 +453,13 @@ export const campInfo = {
     },
     {
       id: "scene-training",
-      kicker: "Scene 02 / training",
-      title: "Днем лагерь переключается в плотную работу с телом и подачей.",
+      kicker: "Этап 2 · занятия",
+      title: "Техника, хореография и практика.",
       description:
-        "Классы и практика идут блоками: body prep, хореография, музыкальность, паузы на восстановление и повтор материала в понятном ритме.",
+        "Подготовка тела, классы, работа с музыкальностью, паузы на восстановление и повтор материала.",
       image: dimaImagePrimary,
-      tags: ["groove", "technique", "practice"],
-      note: "Важен баланс между интенсивом и воздухом, иначе лагерь превращается в обычный интенсив.",
+      tags: ["техника", "музыкальность", "практика"],
+      note: "Нагрузка чередуется с паузами, чтобы сохранить силы на всю смену.",
       metrics: [
         { label: "blocks", value: "3 phases" },
         { label: "energy", value: "high / clean" },
@@ -459,13 +467,13 @@ export const campInfo = {
     },
     {
       id: "scene-content",
-      kicker: "Scene 03 / content",
-      title: "К вечеру история становится визуальной: кадры, sunset и ощущение свободы.",
+      kicker: "Этап 3 · съёмки",
+      title: "Съёмки и вечерняя программа.",
       description:
-        "Вторая половина дня работает на атмосферу. Съемки, короткие jams, разговоры и golden hour собирают тот самый образ лагеря, который хочется пересматривать.",
+        "Во второй половине дня — съёмки, свободная практика, музыка и время с командой.",
       image: yanaImageSecondary,
-      tags: ["golden hour", "camera", "jam"],
-      note: "Контент здесь не отдельно от лагеря, а часть общего переживания смены.",
+      tags: ["съёмка", "свободная практика", "вечерняя программа"],
+      note: "Съёмка становится частью программы и помогает сохранить общий результат.",
       metrics: [
         { label: "light", value: "sunset" },
         { label: "mood", value: "open flow" },
@@ -473,81 +481,81 @@ export const campInfo = {
     },
   ],
   placeholders: {
-    dates: "Июнь–август 2026",
-    price: "Стоимость откроем вместе с бронью",
-    location: "Локация анонсируется отдельным релизом",
+    dates: "Даты следующей смены уточняются",
+    price: "Сообщим перед стартом записи",
+    location: "Сообщим вместе с датами",
   },
   gallery: [yanaImageSecondary, evaImagePrimary, dimaImageSecondary],
   galleryHighlights: [
     {
       title: "Утренний разогрев",
       description:
-        "День начинается мягко, но собранно: body prep, база и настрой на работу в команде.",
+        "День начинается с подготовки тела, базы и настройки на работу в команде.",
       image: evaImagePrimary,
       size: "large",
     },
     {
-      title: "Командная энергия",
+      title: "Командная работа",
       description:
-        "В лагерной программе важны не только классы, но и чувство общей волны внутри смены.",
+        "В программе важны не только классы, но и совместная работа внутри смены.",
       image: dimaImageSecondary,
       size: "tall",
     },
     {
-      title: "Golden hour practice",
+      title: "Практика на закате",
       description:
-        "Короткие sunset-сессии создают ту самую летнюю атмосферу и сильный визуальный след.",
+        "Короткие вечерние сессии дают время повторить материал и снять общие кадры.",
       image: yanaImagePrimary,
       size: "compact",
     },
     {
       title: "Сценическая подача",
       description:
-        "Хореография, музыкальность и уверенность в кадре собираются в один ритм.",
+        "На съёмке соединяются хореография, музыкальность и уверенная подача.",
       image: dimaImageSecondary,
       size: "compact",
     },
     {
       title: "После класса",
       description:
-        "В лагере важны паузы, воздух, разговоры, музыка и все, что делает смену живой.",
+        "Между классами остаётся время на отдых, музыку и общение.",
       image: evaImageSecondary,
       size: "wide",
     },
   ],
   moodGallery: [
     {
-      title: "Sunrise flow",
+      title: "Утренний класс",
       description: "Плавный старт дня с вниманием к телу, дыханию и пластике.",
       image: evaImageSecondary,
     },
     {
-      title: "Studio heat",
-      description: "Интенсивные классы, где техника встречается с характером и драйвом.",
+      title: "Дневная практика",
+      description: "Техника, хореография и повтор материала в группе.",
       image: dimaImagePrimary,
     },
     {
-      title: "Camp portraits",
-      description: "Люди, настроение и кадры, которые хочется пересматривать после смены.",
+      title: "Портреты участников",
+      description: "Люди и кадры, которые остаются после смены.",
       image: yanaImageSecondary,
     },
     {
-      title: "Evening jam",
-      description: "Свободное движение, музыка и тот самый фестивальный летний вайб.",
+      title: "Вечерний джем",
+      description: "Свободное движение, музыка и время с командой.",
       image: evaImageSecondary,
     },
   ],
   cta: {
-    title: "Забронируй интерес к следующей смене уже сейчас.",
+    title: "Хочешь узнать о следующей смене первой?",
     description:
-      "Можно оставить заявку заранее, чтобы первыми получить даты, формат участия, локацию и старт бронирования по Dance Soul Camp.",
+      "Напиши нам, чтобы уточнить даты, программу, стоимость и локацию следующего Dance Soul Camp.",
   },
 } as const;
 
 export const merchContact = {
   telegramHandle: "@miss_luzina",
   telegramUrl: "https://t.me/miss_luzina",
-  note: "Цену и наличие уточняйте в Telegram @miss_luzina.",
+  note: "Цена и наличие — в Telegram @miss_luzina.",
 } as const;
 
 // Данные актуального мерча студии.
@@ -556,8 +564,8 @@ export const merchItems = [
     slug: "dance-pants",
     name: "Штаны для танцев",
     description:
-      "Чёрные штаны с вышивкой Dance Soul и двумя вариантами лампасов.",
-    sizes: "Актуальные размеры уточняйте в Telegram.",
+      "Один свободный силуэт — для тренировок, съёмок и города. Плотный 100% хлопок держит форму и не мешает движению, а красный или белый лампас задаёт настроение.",
+    sizes: "Единый 42–56 · на рост от 150 до 210 см",
     status: "Сейчас в мерче",
     image: merchPantsImageFourth,
   },
@@ -589,26 +597,165 @@ export const merchGallery = [
 export const merchColorways = [
   {
     image: merchPantsDetailDarkImage,
-    title: "Вишнёвый лампас",
+    title: "Красный лампас",
+    alt: "Чёрные штаны Dance Soul с красным лампасом",
   },
   {
     image: merchPantsDetailLightImage,
     title: "Светлый лампас",
+    alt: "Чёрные штаны Dance Soul со светлым лампасом",
   },
 ] as const;
 
 export const merchPhotoGallery = [
-  { image: merchPantsImageFourth, alt: "Танцоры студии в штанах Dance Soul" },
-  { image: merchPantsImageSecondary, alt: "Образ в штанах Dance Soul" },
-  { image: merchPantsImagePrimary, alt: "Движение в штанах Dance Soul" },
-  { image: merchPantsImageGroup, alt: "Командный кадр с мерчем студии" },
-  { image: merchPantsImageTeam, alt: "Танцоры в мерче Dance Soul" },
-  { image: merchPantsImageThird, alt: "Акробатический кадр в штанах Dance Soul" },
-  { image: merchPantsImagePortrait, alt: "Портрет танцоров в мерче студии" },
-  { image: merchPantsImageFloor, alt: "Танцоры в штанах Dance Soul на полу" },
-  { image: merchPantsImageSeat, alt: "Групповой кадр в мерче Dance Soul" },
-  { image: merchPantsImagePose, alt: "Позирование в штанах Dance Soul" },
-  { image: merchPantsImageSixth, alt: "Штаны Dance Soul со спины" },
+  {
+    image: merchPantsImageFourth,
+    alt: "Танцоры студии в штанах Dance Soul",
+    previewClassName: "sm:col-span-2 lg:col-span-7 lg:row-span-2",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 58vw",
+  },
+  {
+    image: merchPantsImageSecondary,
+    alt: "Танцоры показывают свободную посадку штанов Dance Soul",
+    previewClassName: "lg:col-span-5 lg:row-span-3",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 42vw",
+  },
+  {
+    image: merchPantsImageThird,
+    alt: "Акробатический кадр в штанах Dance Soul",
+    previewClassName: "lg:col-span-4 lg:row-span-3",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 42vw",
+  },
+  {
+    image: merchPantsImagePrimary,
+    alt: "Три танцора в штанах Dance Soul",
+    previewClassName: "lg:col-span-8 lg:row-span-2",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchPantsImagePortrait,
+    alt: "Портрет танцоров в мерче Dance Soul",
+    previewClassName: "lg:col-span-5 lg:row-span-3",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchPantsImageSixth,
+    alt: "Три танцора показывают мерч Dance Soul со спины",
+    previewClassName: "sm:col-span-2 lg:col-span-3 lg:row-span-3",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 33vw",
+  },
+  {
+    image: merchPantsImageGroup,
+    alt: "Командный кадр с мерчем студии",
+    previewClassName: "lg:col-span-4 lg:row-span-2",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchPantsImageTeam,
+    alt: "Танцоры в мерче Dance Soul",
+    previewClassName: "lg:col-span-8 lg:row-span-2",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 67vw",
+  },
+  {
+    image: merchPantsImageFloor,
+    alt: "Танцоры в штанах Dance Soul сидят на полу",
+    previewClassName: "lg:col-span-4 lg:row-span-2",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchPantsImageSeat,
+    alt: "Групповой кадр в мерче Dance Soul",
+    previewClassName: "lg:col-span-5 lg:row-span-3",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 42vw",
+  },
+  {
+    image: merchPantsImagePose,
+    alt: "Танцоры позируют в штанах Dance Soul",
+    previewClassName: "lg:col-span-3 lg:row-span-3",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw",
+  },
+] as const;
+
+export const merchStreetGallery = [
+  {
+    image: merchStreetCarWideImage,
+    title: "Ночной город",
+    alt: "Танцовщица в мерче Dance Soul рядом с автомобилем вечером",
+    previewClassName: "sm:col-span-2 lg:col-span-8",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 67vw",
+  },
+  {
+    image: merchStreetCarBackImage,
+    title: "Спиной к камере",
+    alt: "Танцовщица показывает принт Dance Soul на футболке у автомобиля",
+    previewClassName: "lg:col-span-4",
+    previewImageClassName:
+      "lg:aspect-[7/8] lg:object-cover lg:object-bottom",
+    heroImageClassName: "grayscale",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  
+  {
+    image: merchStreetBasketballImage,
+    title: "Городской ритм",
+    alt: "Танцовщица в штанах Dance Soul у баскетбольного щита",
+    previewClassName: "lg:col-span-4",
+    previewSizes:
+    "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchStreetGiftImage,
+    title: "Упаковка дропа",
+    alt: "Чёрный пакет Dance Soul с красной лентой",
+    previewClassName: "lg:col-span-4",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchStreetWallBackImage,
+    title: "Светлый лампас",
+    alt: "Танцовщица у бетонной стены показывает светлый лампас на штанах",
+    previewClassName: "lg:col-span-4",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchStreetStudioImage,
+    title: "После класса",
+    alt: "Три танцора в мерче Dance Soul в студии с красным светом",
+    previewClassName: "sm:col-span-2 lg:col-span-4",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 33vw",
+  },
+  {
+    image: merchStreetWallProfileImage,
+    title: "Вишнёвый лампас",
+    alt: "Танцовщица у бетонной стены показывает вишнёвый лампас на штанах",
+    previewClassName: "lg:col-span-4",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
+  {
+    image: merchStreetBagCloseImage,
+    title: "Детали",
+    alt: "Штаны и пакет с логотипом Dance Soul крупным планом",
+    previewClassName: "lg:col-span-4",
+    previewSizes:
+      "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw",
+  },
 ] as const;
 
 export type Coach = (typeof coaches)[number];

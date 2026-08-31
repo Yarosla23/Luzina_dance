@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import {
   type MouseEvent as ReactMouseEvent,
@@ -18,14 +18,33 @@ type StudioPhoto = {
   title: string;
   alt: string;
   previewClassName?: string;
+  previewImageClassName?: string;
   previewSizes?: string;
 };
 
 type StudioPhotoGalleryProps = {
   photos: readonly StudioPhoto[];
+  showAllPhotos?: boolean;
+  fitImages?: boolean;
+  featuredFirst?: boolean;
+  hideCaptions?: boolean;
+  layout?: "natural" | "contact-sheet";
+  intro?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
 };
 
-export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
+export function StudioPhotoGallery({
+  photos,
+  showAllPhotos = false,
+  fitImages = false,
+  featuredFirst = false,
+  hideCaptions = false,
+  layout = "natural",
+  intro,
+}: StudioPhotoGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -38,7 +57,7 @@ export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
   const activePhoto = photos[activeIndex ?? 0];
   const previewPhotos = photos
     .map((photo, index) => ({ photo, index }))
-    .filter(({ photo }) => photo.previewClassName);
+    .filter(({ photo }) => showAllPhotos || photo.previewClassName);
 
   const showPrevious = useCallback(() => {
     setDirection(-1);
@@ -145,6 +164,16 @@ export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
     return null;
   }
 
+  const isContactSheet = layout === "contact-sheet";
+  const isEditorialGrid = fitImages && featuredFirst;
+  const previewGridClassName = isContactSheet
+    ? "mt-10 columns-1 gap-3 rounded-[1.5rem] border border-white/14 bg-surface p-3 sm:columns-2 sm:gap-4 sm:p-4 lg:grid lg:grid-flow-dense lg:grid-cols-12 lg:auto-rows-[minmax(8rem,12vw)] lg:gap-5 lg:p-5"
+    : isEditorialGrid
+      ? "mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+    : fitImages
+      ? "mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3 lg:gap-6"
+      : "mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[280px]";
+
   const openGallery = (
     index: number,
     event: ReactMouseEvent<HTMLButtonElement>,
@@ -184,38 +213,97 @@ export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
 
   return (
     <>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[280px]">
-        {previewPhotos.map(({ photo, index }) => (
-          <figure
-            key={photo.title}
-            data-space-mock
-            data-scroll-reveal
-            className={`group relative overflow-hidden rounded-[2rem_2rem_4.5rem_2rem] border border-white/14 bg-[#13090c] will-change-transform ${photo.previewClassName}`}
-          >
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              aria-label={`Открыть фотографию «${photo.title}»`}
-              onClick={(event) => openGallery(index, event)}
-              className="relative block h-full w-full cursor-zoom-in overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset"
+      <div className={previewGridClassName}>
+        {isContactSheet && intro ? (
+          <article className="mb-3 inline-flex w-full break-inside-avoid flex-col justify-between rounded-2xl bg-background p-5 text-foreground sm:mb-4 sm:p-7 lg:col-span-5 lg:row-span-2 lg:mb-0 lg:flex lg:p-8">
+            <p className="text-xs font-bold uppercase text-white/70">
+              {intro.eyebrow}
+            </p>
+            <div className="mt-8">
+              <h3 className="font-serif text-3xl leading-[0.92] sm:text-4xl">
+                {intro.title}
+              </h3>
+              <p className="mt-4 max-w-md text-sm leading-6 text-muted">
+                {intro.description}
+              </p>
+            </div>
+          </article>
+        ) : null}
+
+        {previewPhotos.map(({ photo, index }) => {
+          const contactSheetAspect =
+            photo.image.width > photo.image.height
+              ? "aspect-[5/4]"
+              : "aspect-[4/5]";
+
+          return (
+            <figure
+              key={photo.title}
+              data-space-mock
+              data-scroll-reveal
+              className={`group relative overflow-hidden ${
+                isContactSheet ? "rounded-2xl" : "rounded-[2rem_2rem_4.5rem_2rem]"
+              } border border-white/14 bg-[#13090c] will-change-transform ${
+                isContactSheet
+                  ? `${contactSheetAspect} mb-3 inline-block w-full break-inside-avoid sm:mb-4 lg:mb-0 lg:block lg:aspect-auto ${
+                      photo.previewClassName ?? "lg:col-span-4 lg:row-span-2"
+                    }`
+                  : isEditorialGrid
+                    ? `self-start ${index === 0 ? "sm:col-span-2" : ""}`
+                  : fitImages
+                    ? "mb-5 inline-block w-full break-inside-avoid sm:mb-6"
+                    : (photo.previewClassName ??
+                      "min-h-[260px] sm:min-h-[320px] lg:min-h-0")
+              }`}
             >
-              <Image
-                src={photo.image}
-                alt={photo.alt}
-                fill
-                sizes={photo.previewSizes ?? "100vw"}
-                className="object-cover transition duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none"
-              />
-              <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(8,6,7,0.72)_100%)]" />
-              <span className="pointer-events-none absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-sm transition-colors duration-160 group-hover:bg-white group-hover:text-black">
-                <Maximize2 aria-hidden="true" className="h-4 w-4" />
-              </span>
-            </button>
-            <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 p-5 text-xs font-bold uppercase tracking-[0.16em] text-white sm:p-6">
-              {photo.title}
-            </figcaption>
-          </figure>
-        ))}
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                aria-label={`Открыть фотографию «${photo.title}»`}
+                onClick={(event) => openGallery(index, event)}
+                className={`relative block w-full cursor-zoom-in overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset ${fitImages ? "h-auto" : "h-full"}`}
+              >
+                {isContactSheet ? (
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    fill
+                    placeholder="blur"
+                    sizes={photo.previewSizes ?? "100vw"}
+                    className="object-cover transition duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none"
+                  />
+                ) : fitImages ? (
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    width={photo.image.width}
+                    height={photo.image.height}
+                    placeholder="blur"
+                    sizes={photo.previewSizes ?? "100vw"}
+                    className={`block h-auto w-full transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none ${photo.previewImageClassName ?? ""}`}
+                  />
+                ) : (
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    fill
+                    placeholder="blur"
+                    sizes={photo.previewSizes ?? "100vw"}
+                    className="object-cover transition duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none"
+                  />
+                )}
+                {!hideCaptions ? (
+                  <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(8,6,7,0.72)_100%)]" />
+                ) : null}
+              </button>
+              {!hideCaptions ? (
+                <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 p-5 text-xs font-bold uppercase tracking-[0.16em] text-white sm:p-6">
+                  {photo.title}
+                </figcaption>
+              ) : null}
+            </figure>
+          );
+        })}
       </div>
 
       {typeof document !== "undefined"
@@ -226,7 +314,8 @@ export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
                   ref={dialogRef}
                   role="dialog"
                   aria-modal="true"
-                  aria-labelledby="studio-gallery-title"
+                  aria-label={hideCaptions ? "Просмотр фотографий мерча" : undefined}
+                  aria-labelledby={hideCaptions ? undefined : "studio-gallery-title"}
                   aria-describedby="studio-gallery-counter"
                   className="fixed inset-0 z-[100] bg-black/95 p-3 backdrop-blur-md sm:p-6"
                   initial={shouldReduceMotion ? false : { opacity: 0 }}
@@ -238,7 +327,7 @@ export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
                   }}
                   onClick={closeGallery}
                 >
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(139,21,56,0.24),transparent_38%)]" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(92,0,7,0.24),transparent_38%)]" />
 
                   <div
                     className="relative mx-auto flex h-full max-w-7xl items-center justify-center pb-20 pt-16 sm:px-20 sm:pb-16 sm:pt-12"
@@ -302,23 +391,23 @@ export function StudioPhotoGallery({ photos }: StudioPhotoGalleryProps) {
                           alt={activePhoto.alt}
                           fill
                           priority
+                          placeholder="blur"
                           sizes="100vw"
                           className="select-none object-contain"
                         />
                       </motion.div>
                     </AnimatePresence>
 
-                    <div className="pointer-events-none absolute inset-x-16 bottom-1 z-20 text-center sm:bottom-0">
-                      <h2
-                        id="studio-gallery-title"
-                        className="truncate font-serif text-lg text-white sm:text-2xl"
-                      >
-                        {activePhoto.title}
-                      </h2>
-                      <p className="mt-1 hidden text-xs uppercase tracking-[0.12em] text-white/55 sm:block">
-                        Листайте стрелками или клавишами ← →
-                      </p>
-                    </div>
+                    {!hideCaptions ? (
+                      <div className="pointer-events-none absolute inset-x-16 bottom-1 z-20 text-center sm:bottom-0">
+                        <h2
+                          id="studio-gallery-title"
+                          className="truncate font-serif text-lg text-white sm:text-2xl"
+                        >
+                          {activePhoto.title}
+                        </h2>
+                      </div>
+                    ) : null}
 
                     <button
                       type="button"

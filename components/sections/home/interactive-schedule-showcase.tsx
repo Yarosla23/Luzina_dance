@@ -13,10 +13,10 @@ const directionOrder = Array.from(
 
 const directionPalette: Record<string, string> = {
   Контемп: "from-white/12 via-transparent to-transparent text-foreground",
-  "Женственный хип-хоп": "from-[#8b1538]/45 via-transparent to-transparent text-foreground",
-  "Леди-хорео": "from-[#b91e4b]/28 via-transparent to-transparent text-foreground",
-  Стрейтчинг: "from-white/10 via-transparent to-transparent text-foreground",
-  "Здоровая спина": "from-[#8b1538]/30 via-transparent to-transparent text-foreground",
+  "Женственный хип-хоп": "from-[#5c0007]/45 via-transparent to-transparent text-foreground",
+  "Леди-хорео": "from-[#5c0007]/28 via-transparent to-transparent text-foreground",
+  Стретчинг: "from-white/10 via-transparent to-transparent text-foreground",
+  "Здоровая спина": "from-[#5c0007]/30 via-transparent to-transparent text-foreground",
 };
 
 const compactDayLabels: Record<string, string> = {
@@ -69,10 +69,10 @@ export function InteractiveScheduleShowcase() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase text-muted">
-              Переключение по дням
+              Расписание по дням
             </p>
             <h3 className="mt-3 max-w-xl font-serif text-2xl leading-tight text-foreground sm:text-4xl">
-              Выберите день и направление — покажем подходящие занятия.
+              Выбери направление или удобный день.
             </h3>
           </div>
 
@@ -126,7 +126,7 @@ export function InteractiveScheduleShowcase() {
                 >
                   <div
                     className={cn(
-                        "absolute inset-0 bg-[linear-gradient(135deg,rgba(185,30,75,0.24),transparent_55%)] transition duration-200",
+                        "absolute inset-0 bg-[linear-gradient(135deg,rgba(92,0,7,0.24),transparent_55%)] transition duration-200",
                       isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100",
                     )}
                   />
@@ -139,7 +139,7 @@ export function InteractiveScheduleShowcase() {
                       <p className="mt-1 hidden text-sm text-muted sm:block">
                         {matchingCount > 0
                           ? `${matchingCount} ${getClassLabel(matchingCount)}`
-                          : "Нет занятий по фильтру"}
+                          : "Нет занятий"}
                       </p>
                     </div>
                     <span
@@ -161,20 +161,20 @@ export function InteractiveScheduleShowcase() {
           <div className="grid gap-5">
             <div className="grid gap-5">
               <div className="relative overflow-hidden rounded-2xl border border-white/14 bg-black/25 p-4 sm:rounded-3xl sm:p-7">
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(139,21,56,0.24),transparent_58%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(92,0,7,0.24),transparent_58%)]" />
                 <div className="relative flex flex-col gap-4 sm:gap-6">
                   <div className="flex flex-col gap-4">
                     <div>
                       <p className="text-sm font-semibold uppercase text-muted">
-                        Активный день
+                        Занятия в этот день
                       </p>
                       <h4 className="mt-2 font-serif text-3xl text-foreground sm:mt-3 sm:text-4xl">
                         {activeDay.day}
                       </h4>
                       <p className="mt-3 hidden max-w-lg text-sm leading-7 text-muted sm:block sm:text-base">
                         {hasFilteredSessions
-                          ? "Проверьте время, уровень и педагога. Перед первым визитом мы подтвердим наличие места."
-                          : "По выбранному направлению в этот день занятий нет. Попробуйте соседний день или сбросьте фильтр."}
+                          ? "Проверь время, группу и преподавателя. Перед первым занятием мы подтвердим наличие места."
+                          : "По выбранному направлению в этот день занятий нет. Выбери другой день или покажи все направления."}
                       </p>
                     </div>
                   </div>
@@ -187,7 +187,7 @@ export function InteractiveScheduleShowcase() {
                     className="grid gap-3"
                   >
                     {hasFilteredSessions ? (
-                      visibleSessions.map((session, index) => (
+                      visibleSessions.map((session) => (
                         <article
                           key={`${activeDay.day}-${session.time}-${session.direction}`}
                           className={cn(
@@ -204,9 +204,6 @@ export function InteractiveScheduleShowcase() {
                               <div>
                                 <div className="flex flex-wrap items-center gap-3">
                                   <p className="text-xl text-foreground sm:text-2xl">{session.time}</p>
-                                  <span className="hidden rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs font-semibold uppercase text-muted sm:inline-flex">
-                                    Слот {index + 1}
-                                  </span>
                                 </div>
                                 <p className="mt-1 text-base leading-6 text-foreground sm:mt-2 sm:text-lg sm:leading-7">
                                   {session.direction}
@@ -215,10 +212,13 @@ export function InteractiveScheduleShowcase() {
                             </div>
 
                             <div className="flex flex-wrap gap-2 lg:max-w-[340px] lg:justify-end">
-                              <MetaPill icon={<Users2 className="h-4 w-4" />} text={session.level} />
+                              <MetaPill
+                                icon={<Users2 className="h-4 w-4" />}
+                                text={`Группа ${session.level}`}
+                              />
                               <MetaPill
                                 icon={<Sparkles className="h-4 w-4" />}
-                                text={session.teacher}
+                                text={`Преподаватель: ${session.teacher}`}
                               />
                             </div>
                           </div>
@@ -227,10 +227,10 @@ export function InteractiveScheduleShowcase() {
                     ) : (
                       <div className="rounded-2xl border border-dashed border-white/20 bg-white/[0.03] px-4 py-6 text-center sm:rounded-3xl sm:px-5 sm:py-10">
                         <p className="font-serif text-xl text-foreground sm:text-2xl">
-                          В этот день пауза по выбранному направлению
+                          В этот день занятий по выбранному направлению нет
                         </p>
                         <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-muted">
-                          Проверьте соседний день или сбросьте фильтр, чтобы увидеть все занятия.
+                          Выбери другой день или покажи все направления.
                         </p>
                       </div>
                     )}

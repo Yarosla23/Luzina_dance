@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Award, Camera, Sparkles } from "lucide-react";
 
-import { coaches } from "@/lib/site-data";
+import { coaches, socialLinks } from "@/lib/site-data";
 
 import { ButtonLink } from "@/components/shared/button-link";
 import { ImagePanel } from "@/components/shared/image-panel";
@@ -16,6 +16,30 @@ type CoachPageProps = {
     slug: string;
   }>;
 };
+
+const coachPageCopy = {
+  "dima-belov": {
+    cta: "Узнать о занятиях Димы",
+    focusTitle: "База, грув и уверенная подача.",
+    focusDescription:
+      "На занятиях движение разбирается от основы к музыкальности и цельной хореографии.",
+    features: ["База и грув", "Музыкальность и подача"],
+  },
+  "eva-kabajda": {
+    cta: "Узнать о занятиях Евы",
+    focusTitle: "Техника, пластика и внимание к телу.",
+    focusDescription:
+      "На занятиях важны работа с корпусом, качество движения и связь с музыкой.",
+    features: ["Работа с корпусом", "Музыкальность и выразительность"],
+  },
+  "yana-luzina": {
+    cta: "Узнать о занятиях Яны",
+    focusTitle: "Женственный хип-хоп, леди-хорео и характер студии.",
+    focusDescription:
+      "На занятиях Яна работает с пластикой, акцентами и уверенной подачей.",
+    features: ["Пластика и акценты", "Хореография и подача"],
+  },
+} as const;
 
 export async function generateStaticParams() {
   return coaches.map((coach) => ({ slug: coach.slug }));
@@ -47,6 +71,8 @@ export default async function CoachPage({ params }: CoachPageProps) {
     notFound();
   }
 
+  const pageCopy = coachPageCopy[coach.slug];
+
   return (
     <main className="pb-20">
       <PageHero
@@ -56,7 +82,13 @@ export default async function CoachPage({ params }: CoachPageProps) {
         image={coach.image}
         actions={
           <>
-            <ButtonLink href="/#contacts">Записаться</ButtonLink>
+            <ButtonLink
+              href={socialLinks[0].href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {pageCopy.cta}
+            </ButtonLink>
             <ButtonLink href="/" variant="secondary">
               На главную
             </ButtonLink>
@@ -76,27 +108,26 @@ export default async function CoachPage({ params }: CoachPageProps) {
                   Опыт и фокус
                 </p>
                 <h2 className="mt-4 font-serif text-4xl leading-[0.98] text-foreground">
-                  {coach.role} с понятной траекторией роста.
+                  {pageCopy.focusTitle}
                 </h2>
                 <p className="mt-5 text-base leading-7 text-foreground">
                   {coach.experience}
                 </p>
                 <p className="mt-5 text-sm leading-7 text-muted">
-                  На занятиях педагог помогает выстроить основу, услышать музыку
-                  и найти собственную подачу — без сравнения с чужим темпом.
+                  {pageCopy.focusDescription}
                 </p>
 
                 <div className="mt-8 grid gap-3">
                   <div className="border-t border-white/14 py-4">
                     <div className="flex items-center gap-3">
                       <Sparkles className="h-4 w-4 text-[color:var(--accent-warm)]" />
-                      <p className="text-sm text-foreground">Музыкальность и подача</p>
+                      <p className="text-sm text-foreground">{pageCopy.features[0]}</p>
                     </div>
                   </div>
                   <div className="border-t border-white/14 py-4">
                     <div className="flex items-center gap-3">
                       <Camera className="h-4 w-4 text-[color:var(--accent-warm)]" />
-                      <p className="text-sm text-foreground">Хореография и работа в кадре</p>
+                      <p className="text-sm text-foreground">{pageCopy.features[1]}</p>
                     </div>
                   </div>
                 </div>

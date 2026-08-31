@@ -52,11 +52,17 @@ export function SiteFooter() {
             <div>
               <Logo />
               <p className="mt-6 max-w-md text-sm leading-7 text-muted sm:text-base">
-                Студия для тех, кто хочет слышать музыку телом, расти в технике
-                и увереннее занимать пространство — на тренировке, сцене и в жизни.
+                Танцевальная студия в Севастополе для девушек от 16 лет. Поможем
+                выбрать направление, группу и удобное время.
               </p>
               <div className="mt-8">
-                <ButtonLink href="/#contacts">Записаться</ButtonLink>
+                <ButtonLink
+                  href={socialLinks[0].href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Написать в Telegram
+                </ButtonLink>
               </div>
             </div>
 
@@ -113,11 +119,10 @@ export function SiteFooter() {
 
           <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs uppercase text-muted sm:flex-row sm:items-center sm:justify-between">
             <p>
-              {siteSettings.name}. Студия танцев для движения, роста и сильной
-              энергии.
+              {siteSettings.name} · Севастополь
             </p>
             <p>
-              Сделан благодаря{" "}
+              Разработка сайта —{" "}
               <Link
                 href={footerCredit.url}
                 target="_blank"

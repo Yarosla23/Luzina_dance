@@ -16,8 +16,7 @@
 | --- | --- | --- |
 | Stage black | `#080607` | main background |
 | Velvet black | `#13090C` | alternate sections and panels |
-| Ripe cherry | `#8B1538` | brand fields, primary controls |
-| Bright cherry | `#B91E4B` | active states and restrained highlights |
+| Deep cherry | `#5C0007` | brand fields, primary controls, active states, and restrained highlights |
 | Bone | `#F4F0EE` | primary text and light surfaces |
 | White | `#FFFFFF` | highest-emphasis text |
 | Smoke | `#B9AFB2` | secondary copy |
@@ -27,8 +26,7 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 
 ## 3. Typography
 
-- Display: `Bodoni MT`, `Didot`, `Georgia`, serif fallback. High contrast, large scale, short lines.
-- Body and UI: `Arial`, `Helvetica Neue`, system sans-serif. Compact and highly legible.
+- Display, body, and UI: `Montserrat`, Arial, sans-serif fallback. Use weight and scale to separate roles while keeping one consistent typeface.
 - Utility labels: uppercase sans-serif, 0.12–0.18em tracking, 11–12px minimum.
 - Headlines use sentence case. Avoid title case in Russian.
 - Keep body copy at 16px or larger and line-height around 1.65.
@@ -40,7 +38,8 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 - Shape language is soft and controlled: `16px` for compact elements, `24px` for cards, `32px` for major panels, and asymmetric `32–72px` corners for hero photography.
 - Use full pills for primary controls, filters, and compact statuses. Do not make long content sections into capsules.
 - Prefer hairline borders, solid surfaces, and image crops over glass cards and floating blobs.
-- Alternate black, velvet, ripe-cherry, and occasional bone sections to create stage-like rhythm.
+- Page backgrounds use a restrained dry-brush leopard pattern in tones darker than the underlying surface.
+- Alternate black, velvet, deep-cherry, and occasional bone sections to create stage-like rhythm.
 - Use real studio photography. Do not add stock images, fake partner logos, or decorative avatars.
 - Home-page narrative order: hero hook → directions → method → weekly rhythm → studio space → team → extended formats → location → final enrollment CTA.
 - On large screens, directions may become one pinned horizontal chapter. The semantic DOM order remains vertical and complete; mobile and reduced-motion layouts use a regular grid.
@@ -56,7 +55,7 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 ### Buttons
 
 - Minimum target 44×44px.
-- Primary: ripe-cherry fill, white text, full pill shape.
+- Primary: deep-cherry fill, white text, full pill shape.
 - Secondary: transparent or bone fill with strong contrast.
 - Clear `focus-visible` outline on every interactive element.
 
@@ -108,6 +107,6 @@ Never introduce teal, orange, gold, rainbow gradients, or multiple unrelated acc
 
 ## 9. Do / don't
 
-**Do:** use expressive crops, black space, ripe-cherry fields, white editorial type, fluid corners, real schedule and coach data, restrained motion.
+**Do:** use expressive crops, black space, deep-cherry fields, white editorial type, fluid corners, real schedule and coach data, restrained motion.
 
 **Don't:** use generic SaaS glassmorphism, bento dashboards, decorative emojis, warm gold, teal glows, identical radii on every element, bubble-like toy styling, fake testimonials, or self-referential copy.

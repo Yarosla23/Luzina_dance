@@ -27,6 +27,7 @@ export function Logo({ className, markClassName }: LogoProps) {
         <Image
           src={siteSettings.logo}
           alt={siteSettings.name}
+          placeholder="blur"
           className="h-full w-full object-cover"
           sizes="44px"
         />

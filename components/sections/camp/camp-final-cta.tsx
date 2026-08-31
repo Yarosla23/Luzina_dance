@@ -1,4 +1,4 @@
-import { campInfo, siteSettings, socialLinks } from "@/lib/site-data";
+import { campInfo, socialLinks } from "@/lib/site-data";
 
 import { ButtonLink } from "@/components/shared/button-link";
 import { Reveal } from "@/components/shared/reveal";
@@ -42,24 +42,25 @@ export function CampFinalCta() {
                     <p className="mt-2">{campInfo.placeholders.location}</p>
                   </div>
                 </div>
-
-                <p className="mt-6 text-sm leading-7 text-white/75">
-                  {siteSettings.signUpNote}
-                </p>
               </div>
 
               <div className="flex flex-col gap-4 lg:min-w-[16rem]">
-                <ButtonLink href="/#contacts" className="justify-center">
-                  Оставить заявку
-                </ButtonLink>
                 <ButtonLink
                   href={socialLinks[0].href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="justify-center"
+                >
+                  Узнать о следующей смене
+                </ButtonLink>
+                <ButtonLink
+                  href={socialLinks[1].href}
                   target="_blank"
                   rel="noreferrer"
                   variant="secondary"
                   className="justify-center border-white/30 bg-transparent text-white"
                 >
-                  Узнать детали
+                  Написать в VK
                 </ButtonLink>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-import { siteSettings } from "@/lib/site-data";
+import { siteSettings, socialLinks } from "@/lib/site-data";
 
 import { ButtonLink } from "@/components/shared/button-link";
 import { Reveal } from "@/components/shared/reveal";
@@ -8,9 +8,9 @@ import { SiteShell } from "@/components/shared/site-shell";
 
 export function PricingSection() {
   const enrollmentDetails = [
-    "Опыт занятий и комфортный уровень нагрузки",
+    "Твой опыт в танцах",
     "Направление, которое хочется попробовать",
-    "Удобные дни и время для тренировок",
+    "Удобные дни и время",
   ];
 
   return (
@@ -27,11 +27,16 @@ export function PricingSection() {
                   {siteSettings.signUpNote}
                 </h2>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                  Напишите нам — подберём направление и уровень, сверим
-                  расписание и расскажем, что взять на первое занятие.
+                  Напиши, какое направление хочется попробовать и когда удобно
+                  заниматься. Сверим расписание и подскажем, с чего начать.
                 </p>
-                <ButtonLink href="/#contacts" className="mt-7">
-                  Написать для записи
+                <ButtonLink
+                  href={socialLinks[0].href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-7"
+                >
+                  Написать в Telegram
                 </ButtonLink>
               </div>
 

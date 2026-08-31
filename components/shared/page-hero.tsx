@@ -56,6 +56,7 @@ export function PageHero({
                   alt={title}
                   fill
                   priority
+                  placeholder="blur"
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 48vw"
                 />

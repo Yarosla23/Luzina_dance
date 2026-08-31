@@ -1,6 +1,7 @@
 "use client";
 
 import { Minus, Plus, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
@@ -26,8 +27,28 @@ export function ZoomableMerchImage({
   priority = false,
 }: ZoomableMerchImageProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false);
   const [zoom, setZoom] = useState(1);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+    const updateFullscreenAvailability = () => {
+      setIsFullscreenEnabled(mediaQuery.matches);
+
+      if (!mediaQuery.matches) {
+        setIsOpen(false);
+      }
+    };
+
+    updateFullscreenAvailability();
+    mediaQuery.addEventListener("change", updateFullscreenAvailability);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateFullscreenAvailability);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -60,38 +81,66 @@ export function ZoomableMerchImage({
     };
   }, [isOpen]);
 
+  const preview = (
+    <>
+      <Image
+        src={image}
+        alt={alt}
+        fill
+        priority={priority}
+        placeholder="blur"
+        className={cn(
+          "object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none",
+          imageClassName,
+        )}
+        sizes={sizes}
+      />
+      {overlay}
+    </>
+  );
+
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        aria-label={`Открыть изображение: ${alt}`}
-        className={cn(
-          "relative block h-full w-full cursor-zoom-in overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset",
-          className,
-        )}
-      >
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          priority={priority}
-          className={cn("object-cover", imageClassName)}
-          sizes={sizes}
-        />
-        {overlay}
-      </button>
-
-      {isOpen ? (
+      {isFullscreenEnabled ? (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          aria-label={`Открыть изображение: ${alt}`}
+          className={cn(
+            "group relative block h-full w-full cursor-zoom-in overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset",
+            className,
+          )}
+        >
+          {preview}
+        </button>
+      ) : (
         <div
+          className={cn(
+            "group relative block h-full w-full overflow-hidden text-left",
+            className,
+          )}
+        >
+          {preview}
+        </div>
+      )}
+
+      <AnimatePresence>
+        {isOpen ? (
+        <motion.div
           className="fixed inset-0 z-50 bg-black/95 p-4 backdrop-blur-md sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={alt}
           onClick={() => setIsOpen(false)}
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.99 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.995 }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.36,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(139,21,56,0.2),transparent_42%)]" />
-
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(92,0,7,0.2),transparent_42%)]" />
           <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#13090c] p-1 text-white">
             <button
               type="button"
@@ -147,14 +196,16 @@ export function ZoomableMerchImage({
                 alt={alt}
                 fill
                 priority
+                placeholder="blur"
                 className="object-contain transition-transform duration-200"
                 style={{ transform: `scale(${zoom})` }}
                 sizes="100vw"
               />
             </div>
           </div>
-        </div>
-      ) : null}
+        </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }

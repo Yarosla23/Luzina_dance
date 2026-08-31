@@ -12,21 +12,27 @@ import {
   useTransform,
 } from "framer-motion";
 
-import { ZoomableMerchImage } from "@/components/sections/merch/zoomable-merch-image";
 import { ButtonLink } from "@/components/shared/button-link";
 import { SiteShell } from "@/components/shared/site-shell";
 
 type MerchHeroProps = {
   product: {
     status: string;
+    description: string;
     image: StaticImageData;
   };
-  supportingImages: StaticImageData[];
+  supportingImages: readonly {
+    image: StaticImageData;
+    alt: string;
+    heroImageClassName?: string;
+  }[];
   telegramUrl: string;
 };
 
 const heroEase = [0.22, 1, 0.36, 1] as const;
 const carouselKeyframes = [0, 0.25, 0.5, 0.75, 1];
+const merchButtonClassName =
+  "border-[#5c0007] bg-[#5c0007] text-white hover:border-[#5c0007] hover:bg-[#5c0007] hover:text-white";
 
 type CarouselPath = {
   x: string[];
@@ -63,6 +69,7 @@ const carouselPaths: CarouselPath[] = [
 type CarouselImageProps = {
   alt: string;
   image: StaticImageData;
+  imageClassName?: string;
   index: number;
   isReducedMotion: boolean;
   isPrimary?: boolean;
@@ -72,6 +79,7 @@ type CarouselImageProps = {
 function CarouselImage({
   alt,
   image,
+  imageClassName,
   index,
   isReducedMotion,
   isPrimary = false,
@@ -97,21 +105,23 @@ function CarouselImage({
       className="absolute inset-0 origin-center"
       style={isReducedMotion ? staticStyle : { x, y, scale, rotate, zIndex }}
     >
-      <ZoomableMerchImage
-        image={image}
-        alt={alt}
-        className="h-full rounded-[2rem_2rem_7rem_2rem] border border-white/15 bg-surface shadow-soft"
-        sizes="(max-width: 1024px) 100vw, 52vw"
-        overlay={
-          isPrimary ? (
-            <>
-              <span className="absolute inset-0 bg-[linear-gradient(180deg,transparent_52%,rgba(8,6,7,0.64))]" />
-              <span className="absolute bottom-0 left-0 top-0 w-1.5 bg-accent-strong" />
-            </>
-          ) : undefined
-        }
-        priority={isPrimary}
-      />
+      <div className="relative h-full overflow-hidden rounded-[1.5rem_1.5rem_5rem_1.5rem] border border-white/15 bg-surface shadow-soft sm:rounded-[2rem_2rem_7rem_2rem]">
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          priority={isPrimary}
+          placeholder="blur"
+          className={`object-cover ${imageClassName ?? ""}`}
+          sizes="(max-width: 1023px) calc(100vw - 2.5rem), 52vw"
+        />
+        {isPrimary ? (
+          <>
+            <span className="absolute inset-0 bg-[linear-gradient(180deg,transparent_52%,rgba(8,6,7,0.64))]" />
+            <span className="absolute bottom-0 left-0 top-0 w-1.5 bg-accent-strong" />
+          </>
+        ) : null}
+      </div>
     </motion.div>
   );
 }
@@ -165,11 +175,13 @@ export function MerchHero({
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-clip border-b border-white/10 pb-12 pt-28 sm:pb-16 sm:pt-32 lg:h-[200svh] lg:py-0 motion-reduce:lg:h-auto motion-reduce:lg:min-h-[860px] motion-reduce:lg:pb-20 motion-reduce:lg:pt-40"
+      className="relative isolate h-[200svh] overflow-clip border-b border-white/10 bg-[#1f1f1f] motion-reduce:h-auto motion-reduce:min-h-[100svh]"
       onPointerLeave={resetPointer}
       onPointerMove={handlePointerMove}
     >
-      <div className="editorial-grid pointer-events-none absolute inset-0 opacity-40" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="leopard-pattern sticky top-0 h-svh opacity-20 [mask-image:none]" />
+      </div>
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute left-0 top-[27%] h-px w-[44vw] origin-left bg-accent-strong/80"
@@ -178,37 +190,50 @@ export function MerchHero({
         transition={{ duration: 0.76, delay: 0.1, ease: heroEase }}
       />
 
-      <SiteShell className="relative lg:sticky lg:top-0 lg:flex lg:h-svh lg:items-start lg:pb-6 lg:pt-28 motion-reduce:lg:static motion-reduce:lg:h-auto motion-reduce:lg:py-0">
-        <div className="grid w-full gap-12 lg:grid-cols-12 lg:items-start lg:gap-8">
+      <SiteShell className="relative sticky top-0 flex h-svh items-stretch pb-5 pt-24 sm:pb-8 sm:pt-28 lg:items-center lg:py-24 motion-reduce:static">
+        <div className="relative grid h-full w-full lg:h-auto lg:grid-cols-12 lg:items-center lg:gap-8">
           <motion.div
-            className="relative z-10 lg:col-span-5"
+            className="absolute inset-x-0 bottom-0 z-50 px-5 pb-5 sm:px-8 sm:pb-8 lg:relative lg:inset-auto lg:col-span-5 lg:z-10 lg:px-0 lg:pb-0"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.62, delay: 0.08, ease: heroEase }}
           >
             <p className="text-xs font-bold uppercase text-[color:var(--accent-warm)]">
-              Мерч студии / первый дроп
+              {product.status}
             </p>
-            <h1 className="mt-6 max-w-3xl font-serif text-[clamp(4.25rem,13vw,6.75rem)] leading-[0.8] text-white lg:text-[clamp(6rem,8vw,8.75rem)]">
+            <h1 className="mt-4 max-w-3xl font-serif text-[clamp(3.25rem,15vw,4.25rem)] leading-[0.8] text-white lg:mt-6 lg:text-[clamp(5rem,6.7vw,7rem)] xl:text-[clamp(6rem,8vw,8.75rem)]">
               Штаны
-              <span className="block pl-[0.42em] italic text-foreground/85">
+              <span className="block  italic ">
                 для танцев
               </span>
             </h1>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={telegramUrl} target="_blank" rel="noreferrer">
-                Уточнить наличие
+            <p className="mt-4 max-w-md text-sm leading-6 text-white/75 sm:text-base lg:mt-7 lg:text-lg lg:leading-7 lg:text-muted">
+              Вливайся в нашу танцевальную семью.
+            </p>
+
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row lg:mt-8 lg:flex-col lg:items-start xl:flex-row xl:items-stretch">
+              <ButtonLink
+                href={telegramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`${merchButtonClassName} w-full sm:w-auto`}
+              >
+                Узнать цену и наличие
               </ButtonLink>
-              <ButtonLink href="#gallery" variant="secondary">
+              <ButtonLink
+                href="#details"
+                variant="secondary"
+                className="w-full sm:w-auto"
+              >
                 Смотреть фото
               </ButtonLink>
             </div>
           </motion.div>
 
-          <div className="relative min-h-[460px] sm:min-h-[620px] lg:col-span-7 lg:min-h-[clamp(480px,72svh,700px)]">
+          <div className="absolute bottom-4 left-3 right-3 top-1 min-h-0 sm:bottom-6 sm:left-5 sm:right-5 lg:relative lg:inset-auto lg:col-span-7 lg:min-h-[clamp(480px,72svh,700px)]">
             <motion.div
-              className="absolute inset-x-0 bottom-0 top-[3%] z-10 ml-[4%] lg:left-[14%] lg:right-[9%] lg:ml-0"
+              className="absolute inset-0 z-10 lg:left-[14%] lg:right-[9%]"
               style={prefersReducedMotion ? undefined : { x: imageX, y: imageY, rotate: imageRotate }}
               initial={
                 prefersReducedMotion
@@ -218,46 +243,7 @@ export function MerchHero({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.86, delay: 0.18, ease: heroEase }}
             >
-              <div className="absolute inset-0 lg:hidden">
-                {supportingImages.slice(0, 2).map((image, index) => (
-                  <div
-                    key={image.src}
-                    aria-hidden="true"
-                    className={`absolute h-[72%] w-[56%] overflow-hidden border border-white/15 bg-surface shadow-soft sm:h-[76%] sm:w-[52%] ${
-                      index === 0
-                        ? "left-0 top-8 -rotate-[5deg] rounded-[1.5rem_1.5rem_4rem_1.5rem] sm:top-10"
-                        : "right-0 top-14 rotate-[4deg] rounded-[3.5rem_1.5rem_1.5rem] sm:top-16"
-                    }`}
-                  >
-                    <Image
-                      src={image}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 56vw, 52vw"
-                    />
-                    <span className="absolute inset-0 bg-background/20" />
-                  </div>
-                ))}
-
-                <div className="absolute inset-x-[7%] bottom-0 top-[12%] z-10 sm:inset-x-[10%] sm:top-[10%]">
-                  <ZoomableMerchImage
-                    image={product.image}
-                    alt="Штаны Dance Soul на танцорах студии"
-                    className="h-full rounded-[1.5rem_1.5rem_5rem_1.5rem] border border-white/15 bg-surface shadow-soft sm:rounded-[2rem_2rem_6rem_2rem]"
-                    sizes="(max-width: 640px) 86vw, 80vw"
-                    overlay={
-                      <>
-                        <span className="absolute inset-0 bg-[linear-gradient(180deg,transparent_52%,rgba(8,6,7,0.64))]" />
-                        <span className="absolute bottom-0 left-0 top-0 w-1.5 bg-accent-strong" />
-                      </>
-                    }
-                    priority
-                  />
-                </div>
-              </div>
-
-              <div className="absolute inset-0 hidden lg:block">
+              <div className="absolute inset-0">
                 <CarouselImage
                   image={product.image}
                   alt="Штаны Dance Soul на танцорах студии"
@@ -266,17 +252,24 @@ export function MerchHero({
                   isReducedMotion={Boolean(prefersReducedMotion)}
                   scrollProgress={carouselProgress}
                 />
-                {supportingImages.slice(0, 2).map((image, index) => (
-                  <CarouselImage
-                    key={image.src}
-                    image={image}
-                    alt={`Дополнительное фото мерча Dance Soul ${index + 1}`}
-                    index={index + 1}
-                    isReducedMotion={Boolean(prefersReducedMotion)}
-                    scrollProgress={carouselProgress}
-                  />
-                ))}
+                {supportingImages
+                  .slice(0, 2)
+                  .map(({ image, alt, heroImageClassName }, index) => (
+                    <CarouselImage
+                      key={image.src}
+                      image={image}
+                      alt={alt}
+                      imageClassName={heroImageClassName}
+                      index={index + 1}
+                      isReducedMotion={Boolean(prefersReducedMotion)}
+                      scrollProgress={carouselProgress}
+                    />
+                  ))}
               </div>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 z-40 bg-[linear-gradient(180deg,rgba(8,6,7,0.04)_20%,rgba(8,6,7,0.3)_50%,rgba(8,6,7,0.96)_100%)] lg:hidden"
+              />
             </motion.div>
           </div>
         </div>

@@ -21,8 +21,8 @@ type CampTimelineProps = {
 const statusClassNames: Record<CampTimelineItem["status"], string> = {
   архив: "border-white/20 bg-black/45 text-white/70",
   "ранний лист": "border-white/35 bg-white/10 text-white",
-  "бронь скоро": "border-[#b91e4b] bg-[#8b1538]/90 text-white",
-  планирование: "border-[#d95a78] bg-[#8b1538]/60 text-white",
+  "бронь скоро": "border-[#5c0007] bg-[#5c0007]/90 text-white",
+  планирование: "border-[#5c0007] bg-[#5c0007]/60 text-white",
 };
 
 function TimelineEntry({
@@ -56,10 +56,10 @@ function TimelineEntry({
       )}
     >
       {/* Central Point */}
-      <div className="absolute left-3 top-12 z-20 h-5 w-5 -translate-x-1/2 rounded-full border-2 border-[#d95a78] bg-[#080607] shadow-[0_0_20px_rgba(185,30,75,0.45)] sm:left-4 sm:top-16 lg:left-1/2 lg:top-1/2 lg:h-6 lg:w-6 lg:-translate-y-1/2">
+      <div className="absolute left-3 top-12 z-20 h-5 w-5 -translate-x-1/2 rounded-full border-2 border-[#5c0007] bg-[#080607] shadow-[0_0_20px_rgba(92,0,7,0.45)] sm:left-4 sm:top-16 lg:left-1/2 lg:top-1/2 lg:h-6 lg:w-6 lg:-translate-y-1/2">
         <motion.div
           style={{ scale: scrollYProgress }}
-          className="absolute inset-1 rounded-full bg-[#b91e4b] motion-reduce:!transform-none"
+          className="absolute inset-1 rounded-full bg-[#5c0007] motion-reduce:!transform-none"
         />
       </div>
 
@@ -81,6 +81,7 @@ function TimelineEntry({
               src={item.image}
               alt={item.title}
               fill
+              placeholder="blur"
               className="object-cover transition-transform duration-1000 group-hover:scale-110"
               sizes="(max-width: 1024px) 90vw, 40vw"
             />
@@ -99,11 +100,11 @@ function TimelineEntry({
 
           <div className="mt-8">
             <div className={cn(
-              "flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-[#d95a78]",
+              "flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-white/70",
               isLeftColumn ? "lg:flex-row-reverse" : ""
             )}>
               <span>{item.period}</span>
-              <div className="h-px w-8 bg-[#d95a78]/50" />
+              <div className="h-px w-8 bg-[#5c0007]/50" />
             </div>
             <h3 className="mt-4 font-serif text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
               {item.title}
@@ -124,7 +125,7 @@ function TimelineEntry({
             : "lg:col-start-1 lg:ml-auto lg:pr-8 lg:text-right"
         )}
       >
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#d95a78]">
+        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/70">
           В фокусе · 0{index + 1}
         </p>
         <h4 className="mt-4 font-serif text-3xl leading-[1.05] text-white sm:text-4xl">
@@ -144,7 +145,7 @@ function TimelineEntry({
             >
               <span
                 aria-hidden="true"
-                className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#b91e4b]"
+                className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#5c0007]"
               />
               <span>{highlight}</span>
             </li>
@@ -183,7 +184,7 @@ export function CampCurvedTimeline({ items }: CampTimelineProps) {
           >
             <motion.div
               style={{ scaleY: pathLength, transformOrigin: "top" }}
-              className="h-full w-full bg-[linear-gradient(180deg,#8b1538,#b91e4b,#ffffff)] shadow-[0_0_15px_rgba(185,30,75,0.45)] motion-reduce:!transform-none"
+              className="h-full w-full bg-[linear-gradient(180deg,#5c0007,#5c0007,#ffffff)] shadow-[0_0_15px_rgba(92,0,7,0.45)] motion-reduce:!transform-none"
             />
           </div>
 

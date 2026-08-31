@@ -31,8 +31,9 @@ export function HomeHero() {
               Движение, в котором слышно тебя.
             </h1>
             <p data-hero-reveal className="mt-7 max-w-xl border-l-2 border-accent-strong pl-5 text-base leading-7 text-muted sm:text-lg">
-              {siteSettings.name} — пространство, где техника, музыкальность и
-              собственный характер растут вместе.
+              {siteSettings.name} — танцевальная студия для девушек от 16 лет в
+              Севастополе. Здесь можно выбрать направление и группу, с которой
+              будет комфортно начать.
             </p>
 
             <div data-hero-reveal className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -64,7 +65,7 @@ export function HomeHero() {
               <ImagePanel
                 image={heroImage}
                 title={siteSettings.name}
-                description="Техника дает опору. Музыкальность — свободу. Команда помогает не останавливаться."
+                description="В расписании есть группы 16+, 18+ и Про."
                 className="dance-sweep min-h-[500px] rounded-[2rem_2rem_6rem_2rem] sm:min-h-[680px]"
                 priority
                 overlay={
@@ -74,7 +75,7 @@ export function HomeHero() {
 
               <div className="absolute right-0 top-8 hidden rounded-l-2xl bg-accent px-5 py-4 text-right lg:block">
                 <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">Dance soul</p>
-                <p className="mt-1 font-serif text-2xl text-white">Studio / 2026</p>
+                <p className="mt-1 font-serif text-2xl text-white">Студия / Севастополь</p>
               </div>
             </div>
           </Reveal>

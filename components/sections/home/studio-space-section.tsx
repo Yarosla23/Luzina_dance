@@ -53,7 +53,7 @@ const studioPhotos = [
   },
   {
     image: studioAwardsImage,
-    title: "История студии",
+    title: "Кубки и дипломы",
     alt: "Кубки и дипломы учеников танцевальной студии",
     previewClassName:
       "min-h-[340px] sm:col-span-2 lg:col-span-4 lg:min-h-0",
@@ -95,7 +95,7 @@ export function StudioSpaceSection() {
               <SectionHeading
                 eyebrow="Пространство"
                 title="Зал, в котором движение становится своим."
-                description="Зеркала, свободный пол и два сценария света — нейтральный для регулярных занятий и красный для съемок и атмосферы."
+                description="Зеркала, свободный пол и два сценария света — нейтральный для регулярных занятий и красный для съёмок."
               />
             </div>
           </Reveal>
@@ -105,8 +105,8 @@ export function StudioSpaceSection() {
             className="border-l border-white/14 pl-6 lg:ml-auto lg:max-w-md"
           >
             <p className="font-serif text-2xl leading-tight text-white sm:text-3xl">
-              Пространство продумано и для работы над техникой, и для кадров,
-              которые хочется сохранить.
+              Посмотри зал, зону ожидания и детали пространства — все фотографии
+              сделаны в студии.
             </p>
           </div>
         </div>
